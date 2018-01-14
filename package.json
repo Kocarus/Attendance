@@ -4,14 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "supervisor ./bin/www",
+"start": "SET NODE_ENV=development & nodemon app/app.js",
     "client": "ng serve",
     "server": "supervisor ./bin/www",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-	"prod": "cross-env NODE_ENV=production ./bin/www",
 	"postinstall": ""
   },
   "private": true,

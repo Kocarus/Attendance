@@ -5,13 +5,15 @@ module.exports = {
         password: '',
         database: 'qldd'
     },
-     db_postgres: {
-         host: 'ec2-54-247-166-129.eu-west-1.compute.amazonaws.com',
-         user: 'jrfgjdydwutqqq',
-         password: '6596b2752d1eba4e8e6793b4aef3d7424b75ecc5354dcf299fb003ca80aff764',
+
+    db_postgres: {
+         host: 'ec2-23-23-243-111.compute-1.amazonaws.com',
+         user: 'wuztsdvswslvrl',
+         password: 'dd13b6d16c732825d570a3749aacd7f5064db330898a8559cf34b73c5837fe10',
          port:'5432',
          database: 'dfgju67jiv9q22'
      },
+ 
     //db_postgres: {
     //    host: 'localhost',
     //    user: 'postgres',

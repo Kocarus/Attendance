@@ -11,7 +11,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-	"prod": "NODE_ENV=production ./bin/www",
+	"prod": "cross-env NODE_ENV=production ./bin/www",
 	"postinstall": ""
   },
   "private": true,

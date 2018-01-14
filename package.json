@@ -6,7 +6,7 @@
     "ng": "ng",
 "start": " cross-env NODE_ENV=development &  node ./bin/www",
     "qa2": "cross-env NODE_ENV=qa2 & node ./bin/www",
-    "prod": "cross-env NODE_ENV=production & node ./bin/www"
+    "prod": "cross-env NODE_ENV=production & node ./bin/www",
     "client": "ng serve",
     "server": "supervisor ./bin/www",
     "build": "ng build",

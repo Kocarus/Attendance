@@ -21,7 +21,7 @@ module.exports = {
     //    port:'5432',
     //    database: 'qldd'
     //},
-    host: 'hcmus-attendance.herokuapp.com',
+    host: 'https://hcmus-attendance.herokuapp.com/',
     email_setting: {
         host: 'smtp.office365.com', // Office 365 server
         port: 587, // secure SMTP

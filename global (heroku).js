@@ -7,11 +7,12 @@ module.exports = {
     },
 
     db_postgres: {
-         host: 'ec2-23-23-243-111.compute-1.amazonaws.com',
-         user: 'wuztsdvswslvrl',
-         password: 'dd13b6d16c732825d570a3749aacd7f5064db330898a8559cf34b73c5837fe10',
+         host: '
+ec2-54-83-59-144.compute-1.amazonaws.com',
+         user: 'hpctbrawtwlstg',
+         password: 'ac3e8ab5d27df221977bcbc82a6e926e5d2fb9390c6b8950e8e164fe8c4aa436',
          port:'5432',
-         database: 'dfgju67jiv9q22'
+         database: 'ddql7vvcdm33ju'
      },
  
     //db_postgres: {

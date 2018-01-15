@@ -19,7 +19,7 @@ module.exports = {
     //    port:'5432',
     //    database: 'qldd'
     //},
-    host: 'https://hcmus-attendance.herokuapp.com/',
+    host: 'https://hcmus-attendance.herokuapp.com',
     email_setting: {
         host: 'smtp.office365.com', // Office 365 server
         port: 587, // secure SMTP
@@ -155,5 +155,30 @@ module.exports = {
             name = name.substr(0, i - 1);
         }
         return name;
+    },
+    getEmailStudentApcs: function(teacher_name) {
+        var email = '';
+
+        var str = teacher_name;
+        str = str.toLowerCase();
+        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");
+        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");
+        str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i");
+        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");
+        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
+        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
+        str = str.replace(/đ/g,"d");
+        str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+        str = str.replace(/ + /g," ");
+        str = str.trim();
+        var words = str.split(' ')
+        console.log(words)
+        i = 0
+        for (i = 0; i < words.length - 1; i++ )
+          email += words[i][0].toLowerCase()
+        email += words[i].toLowerCase()
+        email += '@apcs.vn'
+        console.log("email" , email)
+        return email
     }
 };

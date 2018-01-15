@@ -1341,13 +1341,8 @@ router.post('/request_to_be_check_attendance/', function(req, res, next) {
         _global.sendError(res, null, "course_id is required");
         return console.log("course_id is required");
     }
-    if (req.body.class_id == null) {
-        _global.sendError(res, null, "class_id is required");
-        return console.log("class_id is required");
-    }
     var student_id = req.body.student_id;
     var course_id = req.body.course_id;
-    var class_id = req.body.class_id;
 
     pool_postgres.connect(function(error, connection, done) {
         if(connection == undefined){
@@ -1372,7 +1367,7 @@ router.post('/request_to_be_check_attendance/', function(req, res, next) {
                         teacher.id,
                         student_id,
                         'requested to be check attendance for course ' + teacher.course_code + ' - ' + teacher.course_name,
-                        class_id,
+                        student_id,
                         _global.notification_type.request_to_be_check_attendance
                     ]]), function(error, result, fields) {
                     if (error) {

@@ -764,34 +764,47 @@ router.post('/import', function(req, res, next) {
                         },
                         //insert teacher & teacher_teach_course
                         function(callback) {
-                            var teacher_list = [];
-                            for (var i = 0; i < course.lecturers.length; i++) {
-                                if (course.lecturers[i] == undefined) continue;
-                                var temp = _global.removeExtraFromTeacherName(course.lecturers[i]);
-                                var email = _global.getEmailFromTeacherName(temp);
-                                var name = _global.removeEmailTeacherName(temp);
-                                teacher_list.push({
-                                    first_name: _global.getFirstName(name),
-                                    last_name: _global.getLastName(name),
-                                    email : email,
-                                    role: _global.lecturer_role
-                                });
+                            var lecturers = course.lecturers.split('\r\n');
+                          var teachers = [];
+                          var name;
+                          for(var i = 0 ; i < lecturers.length; i++){
+                            // var name = _global.removeExtraFromTeacherName(lecturers[i]);
+                            //var email = _global.getEmailFromTeacherName(name);
+                            var email = _global.getEmailFromTeacherName(lecturers[i]);
+                            name = _global.removeEmailTeacherName(lecturers[i]);
+                            if (email == undefined || email == ''){
+                              callback(name + ' missing email')
+                              return
+
                             }
-                            if (course.TAs != undefined) {
-                                for (var i = 0; i < course.TAs.length; i++) {
-                                    if (course.TAs[i] == undefined) continue;
-                                    var temp = _global.removeExtraFromTeacherName(course.TAs[i]);
-                                    var email = _global.getEmailFromTeacherName(temp);
-                                    var name = _global.removeEmailTeacherName(temp);
-                                    teacher_list.push({
-                                        first_name: _global.getFirstName(name),
-                                        last_name: _global.getLastName(name),
-                                        email : email,
-                                        role: _global.ta_role
-                                    });
-                                }
+                            teachers.push({
+                              first_name : _global.getFirstName(name),
+                              last_name : _global.getLastName(name),
+                              email : email,
+                              role : _global.lecturer_role
+                            });
+                          }
+                          if(course.tas != undefined){
+                            var tas = course.tas.split('\r\n');
+                            console.log('TA list', tas)
+                            for(var i = 0 ; i < tas.length; i++){
+                              // var name = _global.removeExtraFromTeacherName(lecturers[i]);
+                              //var email = _global.getEmailFromTeacherName(name);
+                              var email = _global.getEmailFromTeacherName(tas[i]);
+                              name = _global.removeEmailTeacherName(tas[i]);
+                              if (email == undefined || email == ''){
+                                callback(name + ' missing email')
+                                return
+                              }
+                              teachers.push({
+                                first_name : _global.getFirstName(name),
+                                last_name : _global.getLastName(name),
+                                email : email,
+                                role : _global.ta_role
+                              });
                             }
-                            async.each(teacher_list, function(teacher, callback) {
+                          }
+                            async.each(teachers, function(teacher, callback) {
                                 var check_new_teacher = false;
                                 var teacher_id = 0;
                                 async.series([
@@ -942,12 +955,12 @@ router.post('/export', function(req, res, next) {
             function(callback) {
                 async.each(classes_id, function(class_id, callback) {
                     connection.query(format(`SELECT courses.id,courses.code,courses.name,attendance_count,total_stud, courses.note,courses.office_hour,classes.name as class_name,
-                                (SELECT array_to_string(array_agg(CONCAT(users.first_name,' ',users.last_name)), E'\r\n')
+                                (SELECT array_to_string(array_agg(CONCAT(users.first_name,' ',users.last_name, '(', users.email, ')')), E'\r\n')
                                 FROM teacher_teach_course,users 
                                 WHERE users.id = teacher_teach_course.teacher_id AND 
                                     courses.id = teacher_teach_course.course_id AND 
                                     teacher_teach_course.teacher_role = 0) as lecturers,
-                                (SELECT array_to_string(array_agg(CONCAT(users.first_name,' ',users.last_name)), E'\r\n')
+                                (SELECT array_to_string(array_agg(CONCAT(users.first_name,' ',users.last_name, '(', users.email, ')')), E'\r\n')
                                 FROM teacher_teach_course,users 
                                 WHERE users.id = teacher_teach_course.teacher_id AND 
                                     courses.id = teacher_teach_course.course_id AND 

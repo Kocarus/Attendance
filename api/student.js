@@ -454,7 +454,7 @@ router.post('/import', function(req, res, next) {
                                 var new_user = [[
                                     _global.getFirstName(student.name),
                                     _global.getLastName(student.name),
-                                    student.stud_id + '@student.hcmus.edu.vn',
+                                    _global.getEmailStudentApcs(student.name),
                                     student.phone,
                                     _global.role.student,
                                     bcrypt.hashSync(student.stud_id.toString(), 10),
@@ -475,7 +475,7 @@ router.post('/import', function(req, res, next) {
                                             } else {
                                                 new_student_list.push({
                                                     name : _global.getLastName(student.name),
-                                                    email : student.stud_id + '@student.hcmus.edu.vn'
+                                                    email : _global.getEmailStudentApcs(student.name)
                                                 });
                                                 callback();
                                             }
@@ -516,16 +516,14 @@ router.post('/import', function(req, res, next) {
                     var token = jwt.sign({ email: student.email }, _global.jwt_secret_key, { expiresIn: _global.jwt_register_expire_time });
                     var link = _global.host + '/register;token=' + token;
                     _global.sendMail(
-                        '"Giáo vụ"',
+                        '"Nhóm Capstone"',
                         student.email,
                          'Register your account',
-                        'Hi,'+ student.name + '\r\n' + 
-                            'Your account has been created.To setup your account for the first time, please go to the following web address: \r\n\r\n' +
+                        'Chào'+ _global.getLastName(student.name) + '\r\n' + 
+                            'Nhóm mình làm môn Captone đề tài về Checking Attendance. Hệ thống này giúp giáo viên và học sinh có thể điểm danh  thông qua điện thoại và website, qua đó giúp tiết kiệm thời gian cũng như an toàn hơn . Hệ thống này cũng giúp cho giáo vụ có thể quản lý học sinh một cách dơn giản và hiệu quả . Dưới sự cho phép của thầy Vũ, nhóm mình sẽ triển khai thử nghiệm đồ án vào môn Software Testing CS423. Hiện tại nếu điện thoại của bạn chạy hệ điều hành anhdroid xin cài đật file apk được đính kèm trong mail. Quá trình thử nghiệm sẽ bắt đầu từ thứ 5 tuần này ngày 19/1/2018 . Việc thử nghiệm này sẽ được hướng dẫn chi tiết vào đầu buổi học chiều thứ 5 ngày 19/1/ 2018. Mong bạn sử dụng và hồi đáp cho nhóm mình. Cảm ơn bạn \r\n\r\n' +
+                            'Tài khoản của bạn đã được tạo với tên ' + student.email.replace('@apcs.vn', '') + '\r\n\r\n' +
                             link + 
-                            '\r\n(This link is valid for 7 days from the time you received this email)\r\n\r\n' +
-                            'If you need help, please contact the site administrator,\r\n' +
-                            'Admin User \r\n\r\n' +
-                            'admin@fit.hcmus.edu.vn'
+                            '\r\n( Đường link chỉ tồn tại 7 ngày kể từ ngày nhận mail.) \r\n\r\n'
                             );
                     callback();
                 }, function(error) {

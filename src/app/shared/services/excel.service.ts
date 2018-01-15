@@ -341,7 +341,7 @@ export class ExcelService {
                 workbook.sheet(0).cell("B" + Math.floor(i + 2)).value(course_list[i].code).style("border", true);
                 workbook.sheet(0).cell("C" + Math.floor(i + 2)).value(course_list[i].name).style("border", true);
                 workbook.sheet(0).cell("D" + Math.floor(i + 2)).value(course_list[i].lecturers).style("border", true);
-                workbook.sheet(0).cell("E" + Math.floor(i + 2)).value(course_list[i].TAs).style("border", true);
+                workbook.sheet(0).cell("E" + Math.floor(i + 2)).value(course_list[i].tas).style("border", true);
                 workbook.sheet(0).cell("F" + Math.floor(i + 2)).value(course_list[i].office_hour).style("border", true);
                 workbook.sheet(0).cell("G" + Math.floor(i + 2)).value(course_list[i].note).style("border", true);
             }
@@ -372,7 +372,7 @@ export class ExcelService {
                     workbook.sheet(0).cell("B" + Math.floor(i + 2)).value(course_list[i].code).style("border", true);
                     workbook.sheet(0).cell("C" + Math.floor(i + 2)).value(course_list[i].name).style("border", true);
                     workbook.sheet(0).cell("D" + Math.floor(i + 2)).value(course_list[i].lecturers).style("border", true);
-                    workbook.sheet(0).cell("E" + Math.floor(i + 2)).value(course_list[i].TAs).style("border", true);
+                    workbook.sheet(0).cell("E" + Math.floor(i + 2)).value(course_list[i].tas).style("border", true);
                     workbook.sheet(0).cell("F" + Math.floor(i + 2)).value(course_list[i].office_hour).style("border", true);
                     workbook.sheet(0).cell("G" + Math.floor(i + 2)).value(course_list[i].note).style("border", true);
                 }

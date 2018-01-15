@@ -85,7 +85,7 @@ router.post('/change-password', function(req, res, next) {
             if (bcrypt.compareSync(current_password, password_hash)) {
                 var params = [bcrypt.hashSync(new_password, 10), user_id];
                 //update password
-                connection.query(format('UPDATE users SET password = %L WHERE id = %L LIMIT 1', params), function(error, result, fields) {
+                connection.query(format('UPDATE users SET password = %L WHERE id = %L LIMIT 1', params[0], params[1]), function(error, result, fields) {
                     if (error) {
                         res.send({ result: 'failure', message: 'Password Updated Failed' });
                         done();

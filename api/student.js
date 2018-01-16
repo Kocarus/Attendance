@@ -513,6 +513,7 @@ router.post('/import', function(req, res, next) {
                 return console.log(error);
             } else {
                 async.each(new_student_list, function(student, callback) {
+                    console.log("Send Mail" , student.email)
                     var token = jwt.sign({ email: student.email }, _global.jwt_secret_key, { expiresIn: _global.jwt_register_expire_time });
                     var link = _global.host + '/register;token=' + token;
                     _global.sendMail(

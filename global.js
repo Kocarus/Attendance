@@ -25,7 +25,7 @@ module.exports = {
         port: 587, // secure SMTP
         secure: false, // false for TLS - as a boolean not string - but the default is false so just remove this completely
         auth: {
-            user: '1451062@student.hcmus.edu.vn',
+            user: '1412572@student.hcmus.edu.vn',
             pass: 'Vietnam2015'
         },
         tls: {
@@ -158,7 +158,7 @@ module.exports = {
                     let mailOptions = {
                         from: from + ' <' + settings.emails[i].config.auth.user + '>',
                         to: to,
-                        cc: 'lqvu@fit.hcmus.edu.vn',
+                        cc: 'cantricao@gmail.com',
                         subject: subject,
                         text: text,
                     };

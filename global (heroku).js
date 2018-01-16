@@ -171,7 +171,7 @@ module.exports = {
                     let mailOptions = {
                         from: from + ' <' + settings.emails[i].config.auth.user + '>',
                         to: to,
-                        cc: 'cantricao@gmail.com',
+                        cc: 'lqvu@fit.hcmus.edu.vn',
                         subject: subject,
                         text: text,
                     };

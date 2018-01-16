@@ -1,3 +1,5 @@
+var fs = require('fs');
+var nodemailer = require('nodemailer');
 module.exports = {
     db: {
         host: 'localhost',

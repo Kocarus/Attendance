@@ -1,5 +1,3 @@
-var fs = require('fs');
-var nodemailer = require('nodemailer');
 module.exports = {
     db: {
         host: 'localhost',
@@ -8,12 +6,12 @@ module.exports = {
         database: 'qldd'
     },
     db_postgres: {
-         host: 'ec2-54-83-59-144.compute-1.amazonaws.com',
-         user: 'hpctbrawtwlstg',
-         password: 'ac3e8ab5d27df221977bcbc82a6e926e5d2fb9390c6b8950e8e164fe8c4aa436',
-         port:'5432',
-         database: 'ddql7vvcdm33ju'
-     },
+        host: 'ec2-54-83-59-144.compute-1.amazonaws.com',
+        user: 'hpctbrawtwlstg',
+        password: 'ac3e8ab5d27df221977bcbc82a6e926e5d2fb9390c6b8950e8e164fe8c4aa436',
+        port:'5432',
+        database: 'ddql7vvcdm33ju'
+    },
     //db_postgres: {
     //    host: 'localhost',
     //    user: 'postgres',
@@ -40,8 +38,6 @@ module.exports = {
         send_absence_request:2,
         accept_absence_request:3,
         reject_absence_request:4,
-        open_attendance:5,
-        request_to_be_check_attendance:6,
     },
     attendance_type:{
         permited_absent: -1,
@@ -58,15 +54,6 @@ module.exports = {
     attendance_status:{
         normal: 0,
         exemption: 1,
-    },
-    feedback_status:{
-        pending: 0,
-        replied: 1,
-    },
-    feedback_categories:{
-        all: 0,
-        academic: 1,
-        facility: 2,
     },
     role: {
         admin: 4,
@@ -87,7 +74,7 @@ module.exports = {
     jwt_secret_key: '13530191353049',
     jwt_expire_time: '1d',
     jwt_reset_password_expire_time: 30 * 60,
-    jwt_register_expire_time: '7d',
+
     default_page: 1,
     default_limit: 10,
 
@@ -98,37 +85,6 @@ module.exports = {
 
     sendError: function(res, detail = null, message = "Server error") {
         res.send({ result: 'failure', detail: detail, message: message });
-    },
-
-    sendMail: function(from, to, subject, text) {
-        fs.readFile('./api/data/settings.json', 'utf8', function (error, data) {
-            if (error){
-                if (error.code === 'ENOENT') {
-                    return console.log('Setting file not found');
-                } else {
-                    return console.log(error);
-                }
-            }
-            var settings = JSON.parse(data);
-            for(var i = 0 ; i < settings.emails.length; i++){
-                if(settings.selected_host == settings.emails[i].host_name){
-                    let transporter = nodemailer.createTransport(settings.emails[i].config);
-                    let mailOptions = {
-                        from: from + ' <' + settings.emails[i].config.auth.user + '>',
-                        to: to,
-                        cc: 'cantricao@gmail.com',
-                        subject: subject,
-                        text: text,
-                    };
-                    transporter.sendMail(mailOptions, (error, info) => {
-                        if (error) {
-                            return console.log(error);
-                        }
-                        console.log('Message %s sent: %s', info.messageId, info.response);
-                    });
-                }
-            }
-        });
     },
 
     filterListByPage: function(page, limit, list) {
@@ -185,6 +141,38 @@ module.exports = {
         }
         return program_code;
     },
+
+    sendMail: function(from, to, subject, text) {
+        fs.readFile('./api/data/settings.json', 'utf8', function (error, data) {
+            if (error){
+                if (error.code === 'ENOENT') {
+                    return console.log('Setting file not found');
+                } else {
+                    return console.log(error);
+                }
+            }
+            var settings = JSON.parse(data);
+            for(var i = 0 ; i < settings.emails.length; i++){
+                if(settings.selected_host == settings.emails[i].host_name){
+                    let transporter = nodemailer.createTransport(settings.emails[i].config);
+                    let mailOptions = {
+                        from: from + ' <' + settings.emails[i].config.auth.user + '>',
+                        to: to,
+                        cc: 'cantricao@gmail.com',
+                        subject: subject,
+                        text: text,
+                    };
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message %s sent: %s', info.messageId, info.response);
+                        console.log('Mail send from ', from, ' to ' , to)
+                    });
+                }
+            }
+        });
+    },
     
     removeExtraFromTeacherName: function(teacher_name) {
         var name = teacher_name;
@@ -194,36 +182,12 @@ module.exports = {
             name = name.substr(i + 1, name.length - 1);
         }
         //cắt (+TA)
-        i = name.lastIndexOf('(+TA)');
+        i = name.lastIndexOf('(');
         if (i != -1) {
-            name = name.splice(i, 5);
+            name = name.substr(0, i - 1);
         }
         return name;
     },
-    removeEmailTeacherName: function(teacher_name) {
-        var name = teacher_name;
-        //cắt học vị
-        var i = name.indexOf(' (');
-        if (i != -1) {
-            name = name.substr(i + 1, name.length - 1);
-        }
-        i = name.indexOf('(');
-        if (i != -1) {
-            name = name.substr(i + 1, name.length - 1);
-        }
-        return name;
-    },
-
-    getEmailFromTeacherName: function(teacher_name) {
-        var email = '';
-        var i1 = teacher_name.lastIndexOf('(');
-        var i2 = teacher_name.lastIndexOf(')');
-        if (i1 != -1) {
-            email = teacher_name.substr(i1+1, i2);
-        }
-        return email;
-    },
-
     getEmailStudentApcs: function(teacher_name) {
         var email = '';
 

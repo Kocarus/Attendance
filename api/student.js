@@ -520,10 +520,12 @@ router.post('/import', function(req, res, next) {
                         student.email,
                          'Register your account',
                         'Chào bạn '+ student.name + ' \r\n' + 
-                            'Nhóm mình làm môn Captone đề tài về Checking Attendance. Hệ thống này giúp giáo viên và học sinh có thể điểm danh  thông qua điện thoại và website, qua đó giúp tiết kiệm thời gian cũng như an toàn hơn . Hệ thống này cũng giúp cho giáo vụ có thể quản lý học sinh một cách dơn giản và hiệu quả . Dưới sự cho phép của thầy Vũ, nhóm mình sẽ triển khai thử nghiệm đồ án vào môn Software Testing CS423. Hiện tại nếu điện thoại của bạn chạy hệ điều hành anhdroid xin cài đật file apk được đính kèm trong mail. Quá trình thử nghiệm sẽ bắt đầu từ thứ 5 tuần này ngày 19/1/2018 . Việc thử nghiệm này sẽ được hướng dẫn chi tiết vào đầu buổi học chiều thứ 5 ngày 19/1/ 2018. Mong bạn sử dụng và hồi đáp cho nhóm mình. Cảm ơn bạn \r\n\r\n' +
+                            'Nhóm mình làm môn Captone đề tài về Checking Attendance. Hệ thống này giúp giáo viên và học sinh có thể điểm danh  thông qua điện thoại và website, qua đó giúp tiết kiệm thời gian cũng như an toàn hơn . Hệ thống này cũng giúp cho giáo vụ có thể quản lý học sinh một cách dơn giản và hiệu quả . Dưới sự cho phép của thầy Vũ, nhóm mình sẽ triển khai thử nghiệm đồ án vào môn Software Testing CS423. Hiện tại nếu điện thoại của bạn chạy hệ điều hành anhdroid xin cài đật file apk theo link bên dưới . Quá trình thử nghiệm sẽ bắt đầu từ thứ 5 tuần này ngày 19/1/2018 . Việc thử nghiệm này sẽ được hướng dẫn chi tiết vào đầu buổi học chiều thứ 5 ngày 19/1/ 2018. Mong bạn sử dụng và hồi đáp cho nhóm mình. Cảm ơn bạn \r\n\r\n' +
                             'Tài khoản của bạn đã được tạo với tên ' + student.email.replace('@apcs.vn', '') + '\r\n\r\n' +
                             link + 
-                            '\r\n( Đường link chỉ tồn tại 7 ngày kể từ ngày nhận mail.) \r\n\r\n'
+                            '\r\n( Đường link chỉ tồn tại 7 ngày kể từ ngày nhận mail.) \r\n\r\n' + 
+                            'Link cho app Android: https://drive.google.com/open?id=1nr7z80yBkeVSvJSNMKZQg_TuqFONNxmm \r\n\r\n'
+                            
                             );
                     callback();
                 }, function(error) {

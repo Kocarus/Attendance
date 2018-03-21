@@ -759,7 +759,7 @@ export class ExcelService {
                 workbook.sheet(0).cell("B4").value("MSSV").style("border", true).style("horizontalAlignment", "center").style("bold",true);
                 workbook.sheet(0).cell("C4").value("Họ Tên").style("border", true).style("horizontalAlignment", "center").style("bold",true);
                 workbook.sheet(0).column("C").width(30);
-                workbook.sheet(0).cell("D4").value("Tuần 1").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("D4").value("Tuần 0").style("horizontalAlignment", "center").style("bold",true);
                 workbook.sheet(0).cell("F4").value("Tuần 2").style("horizontalAlignment", "center").style("bold",true);
                 workbook.sheet(0).cell("H4").value("Tuần 3").style("horizontalAlignment", "center").style("bold",true);
                 workbook.sheet(0).cell("J4").value("Tuần 4").style("horizontalAlignment", "center").style("bold",true);

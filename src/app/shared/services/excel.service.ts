@@ -811,7 +811,7 @@ export class ExcelService {
                 return workbook.outputAsync()
                     .then(function (blob) {
                         if (file_name == '') file_name = 'attendance_list';
-                        FileSaver.saveAs(blob, file_name + ".pdf");
+                        FileSaver.saveAs(blob, file_name + ".xlsx");
                     });
             });
     }

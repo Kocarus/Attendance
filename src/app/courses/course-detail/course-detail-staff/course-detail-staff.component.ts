@@ -408,14 +408,14 @@ export class CourseDetailStaffComponent implements OnInit {
     }
 
     public onExportAttendanceList(){
-        // let lecturers = '';
-        // for (let i = 0; i < this.lecturers.length; i++){
-        //     lecturers += this.lecturers[i].first_name + ' ' + this.lecturers[i].last_name + '\r\n';
-        // }
-        // this.excelService.writeAttendanceList(
-        //     this.attendance_list,
-        //     this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')',
-        //     lecturers
-        //     );
+        let lecturers = '';
+        for (let i = 0; i < this.lecturers.length; i++){
+            lecturers += this.lecturers[i].first_name + ' ' + this.lecturers[i].last_name + '\r\n';
+        }
+        this.excelService.writeAttendanceList(
+            this.attendance_list,
+            this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')',
+            lecturers
+            );
     }
 }

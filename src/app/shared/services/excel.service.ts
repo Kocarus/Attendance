@@ -778,17 +778,11 @@ export class ExcelService {
                     var j = 0;
                     for(j = 0 ; j < attendance_list[i].attendance_details.length; j++){
                         var value;
-                        var circle = {
-                            width: '20px',
-                            height: '20px',
-                            borderRadius:'50%'
-                        }
-                        workbook.sheet(0).cell(cell[j] + Math.floor(i + 5)).style(circle)
                         switch (attendance_list[i].attendance_details[j].attendance_type) {
                             case this.appService.attendance_type.checklist:
                             case this.appService.attendance_type.quiz:
                             case this.appService.attendance_type.qr:
-                                workbook.sheet(0).cell(cell[j] + Math.floor(i + 5)).style("border", true).style("bold",true).style("border-radius", '50%')
+                                workbook.sheet(0).cell(cell[j] + Math.floor(i + 5)).style("border", true).style("bold",true).style("border-radius", '50%');
                                 break;
                             case this.appService.attendance_type.permited_absent:
                                 workbook.sheet(0).cell(cell[j] + Math.floor(i + 5)).value('P').style("border", true).style("bold",true);

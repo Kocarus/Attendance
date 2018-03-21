@@ -779,7 +779,6 @@ export class ExcelService {
                     for(j = 0 ; j < attendance_list[i].attendance_details.length; j++){
                         var value;
                         var circle = {
-                            background: '#f00',
                             width: '20px',
                             height: '20px',
                             borderRadius:'50%'

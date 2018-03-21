@@ -75,7 +75,7 @@ export class ExcelService {
             return workbook.outputAsync()
                 .then(function (blob) {
                     if (file_name == '') file_name = 'students';
-                    FileSaver.saveAs(blob, file_name + ".xlsx");
+                    FileSaver.saveAs(blob, file_name + ".pdf");
                 });
         });
     }
@@ -104,7 +104,7 @@ export class ExcelService {
                 const range = workbook.sheet(0).range("A1:Y"+Math.floor(student_list.length+3));
                 return workbook.outputAsync()
                     .then(function (blob) {
-                        zip.file(file_names[index] + ".xlsx", blob);
+                        zip.file(file_names[index] + ".pdf", blob);
                         callback();
                     });
             });
@@ -167,7 +167,7 @@ export class ExcelService {
                 const range = workbook.sheet(0).range("A1:I"+Math.floor(student_list.length+13));
                 return workbook.outputAsync()
                     .then(function (blob) {
-                        zip.file(class_has_course.code + ' - ' + class_has_course.name + ' - ' + class_has_course.class_name + ".xlsx", blob);
+                        zip.file(class_has_course.code + ' - ' + class_has_course.name + ' - ' + class_has_course.class_name + ".pdf", blob);
                         callback();
                     });
             });
@@ -223,7 +223,7 @@ export class ExcelService {
                 const range = workbook.sheet(0).range("A1:G"+Math.floor(student_list.length+6));
                 return workbook.outputAsync()
                     .then(function (blob) {
-                        zip.file(class_has_course.code + ' - ' + class_has_course.name + ' - ' + class_has_course.class_name + ".xlsx", blob);
+                        zip.file(class_has_course.code + ' - ' + class_has_course.name + ' - ' + class_has_course.class_name + ".pdf", blob);
                         callback();
                     });
             });
@@ -288,7 +288,7 @@ export class ExcelService {
                 return workbook.outputAsync()
                     .then(function (blob) {
                         if (file_name == '') file_name = 'teachers';
-                        FileSaver.saveAs(blob, file_name + ".xlsx");
+                        FileSaver.saveAs(blob, file_name + ".pdf");
                     });
             });
     }
@@ -349,7 +349,7 @@ export class ExcelService {
             return workbook.outputAsync()
                 .then(function (blob) {
                     if (file_name == '') file_name = 'courses';
-                    FileSaver.saveAs(blob, file_name + ".xlsx");
+                    FileSaver.saveAs(blob, file_name + ".pdf");
                 });
         });
     }
@@ -379,7 +379,7 @@ export class ExcelService {
                 const range = workbook.sheet(0).range("A1:G"+Math.floor(course_list.length+4));
                 return workbook.outputAsync()
                     .then(function (blob) {
-                        zip.file(course_list[0].class_name + ".xlsx", blob);
+                        zip.file(course_list[0].class_name + ".pdf", blob);
                         callback();
                     });
             });
@@ -571,7 +571,7 @@ export class ExcelService {
 
                 return workbook.outputAsync()
                     .then(function (blob) {
-                        zip.file(schedule.file_name + ".xlsx", blob);
+                        zip.file(schedule.file_name + ".pdf", blob);
                         callback();
                     });
             });
@@ -691,7 +691,7 @@ export class ExcelService {
                 .then(function (blob) {
                     console.log(5);
                     if (file_name == '') file_name = 'schedule';
-                    FileSaver.saveAs(blob, file_name + ".xlsx");
+                    FileSaver.saveAs(blob, file_name + ".pdf");
                 });
         });
     }
@@ -811,7 +811,7 @@ export class ExcelService {
                 return workbook.outputAsync()
                     .then(function (blob) {
                         if (file_name == '') file_name = 'attendance_list';
-                        FileSaver.saveAs(blob.toBlob("application/pdf"), file_name + ".pdf");
+                        FileSaver.saveAs(blob, file_name + ".pdf");
                     });
             });
     }
@@ -884,7 +884,7 @@ export class ExcelService {
                 const range = workbook.sheet(0).range("A1:Y"+Math.floor(student_list.length+6));
                 return workbook.outputAsync()
                     .then(function (blob) {
-                        zip.file(class_has_course.code + ' - ' + class_has_course.name + ' - ' + class_has_course.class_name + ".xlsx", blob);
+                        zip.file(class_has_course.code + ' - ' + class_has_course.name + ' - ' + class_has_course.class_name + ".pdf", blob);
                         callback();
                     });
             });
@@ -940,7 +940,7 @@ export class ExcelService {
                 const range = workbook.sheet(0).range("A1:G"+Math.floor(student_list.length+6));
                 return workbook.outputAsync()
                     .then(function (blob) {
-                        zip.file(class_has_course.code + ' - ' + class_has_course.name + ' - ' + class_has_course.class_name + ".xlsx", blob);
+                        zip.file(class_has_course.code + ' - ' + class_has_course.name + ' - ' + class_has_course.class_name + ".pdf", blob);
                         callback();
                     });
             });

@@ -446,7 +446,7 @@ export class CourseDetailStaffComponent implements OnInit {
                             { text: 'Week 7', style: 'tableHeader', colSpan: 2, alignment: 'center'},
                             { text: 'Week 8', style: 'tableHeader', colSpan: 2, alignment: 'center'},
                             { text: 'Week 9', style: 'tableHeader', colSpan: 2, alignment: 'center'},
-                            { text: 'Week 11', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 10', style: 'tableHeader', colSpan: 2, alignment: 'center'},
                             { text: 'Week 11', style: 'tableHeader', colSpan: 2, alignment: 'center'},
                             ]
                         ]
@@ -482,7 +482,8 @@ export class CourseDetailStaffComponent implements OnInit {
         
         for (var i = 0; i < this.attendance_list.length; i++){
             var item = [i+1, this.attendance_list[i].code, this.attendance_list[i].name]
-            console.log(dd.content[2]['table'].body.length)
+            for(var i = 1 ;i<= 11;i++)
+                item.push('')
             dd.content[2]['table'].body.push(item)
 
         }

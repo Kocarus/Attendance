@@ -58,10 +58,10 @@ export class ExcelService {
             workbook.sheet(0).cell("A1").value("Danh sách sinh viên").style("horizontalAlignment", "center");
 
             workbook.sheet(0).cell("A3").value("STT").style("border", true).style("horizontalAlignment", "center");
-            workbook.sheet(0).cell("B3").value("ID").style("border", true).style("horizontalAlignment", "center");
-            workbook.sheet(0).cell("C3").value("Name").style("border", true).style("horizontalAlignment", "center");
-            workbook.sheet(0).cell("D3").value("Phone").style("border", true).style("horizontalAlignment", "center");
-            workbook.sheet(0).cell("E3").value("Class").style("border", true).style("horizontalAlignment", "center");
+            workbook.sheet(0).cell("B3").value("MSSV").style("border", true).style("horizontalAlignment", "center");
+            workbook.sheet(0).cell("C3").value("Họ Tên").style("border", true).style("horizontalAlignment", "center");
+            workbook.sheet(0).cell("D3").value("SĐT").style("border", true).style("horizontalAlignment", "center");
+            workbook.sheet(0).cell("E3").value("Lớp").style("border", true).style("horizontalAlignment", "center");
 
             for (var i = 0; i < student_list.length; i++) {
                 workbook.sheet(0).cell("A" + Math.floor(i + 4)).value(i + 1).style("border", true);
@@ -88,10 +88,10 @@ export class ExcelService {
                 workbook.sheet(0).cell("A1").value("Danh sách sinh viên " + file_names[index]).style("horizontalAlignment", "center");
 
                 workbook.sheet(0).cell("A3").value("STT").style("border", true).style("horizontalAlignment", "center");
-                workbook.sheet(0).cell("B3").value("ID").style("border", true).style("horizontalAlignment", "center");
-                workbook.sheet(0).cell("C3").value("Name").style("border", true).style("horizontalAlignment", "center");
-                workbook.sheet(0).cell("D3").value("Phone").style("border", true).style("horizontalAlignment", "center");
-                workbook.sheet(0).cell("E3").value("Class").style("border", true).style("horizontalAlignment", "center");
+                workbook.sheet(0).cell("B3").value("MSSV").style("border", true).style("horizontalAlignment", "center");
+                workbook.sheet(0).cell("C3").value("Họ Tên").style("border", true).style("horizontalAlignment", "center");
+                workbook.sheet(0).cell("D3").value("SĐT").style("border", true).style("horizontalAlignment", "center");
+                workbook.sheet(0).cell("E3").value("Lớp").style("border", true).style("horizontalAlignment", "center");
 
                 for (var i = 0; i < student_list.length; i++) {
                     workbook.sheet(0).cell("A" + Math.floor(i + 4)).value(i + 1).style("border", true);
@@ -129,16 +129,16 @@ export class ExcelService {
                 workbook.sheet(0).cell("A1").value("Trường Đại học Khoa học Tự nhiên - TP.HCM");
                 workbook.sheet(0).cell("A2").value("Khoa Công Nghệ Thông Tin");
                 workbook.sheet(0).cell("A3").value("BẢNG ĐIỂM TỔNG KẾT MÔN").style("horizontalAlignment", "center");
-                workbook.sheet(0).cell("A4").value("semester: " + class_has_course.semester);
+                workbook.sheet(0).cell("A4").value("Học kỳ: " + class_has_course.semester);
                 workbook.sheet(0).cell("A5").value('Chương trình: ' + class_has_course.program);
-                workbook.sheet(0).cell("H5").value('Class: ' + class_has_course.class_name);
+                workbook.sheet(0).cell("H5").value('Lớp: ' + class_has_course.class_name);
                 workbook.sheet(0).cell("A6").value('Môn: ' + class_has_course.code + ' - ' + class_has_course.name);
                 workbook.sheet(0).cell("H6").value('Ngày thi: ');
-                workbook.sheet(0).cell("A7").value('Teacher: ' + class_has_course.lecturers);
+                workbook.sheet(0).cell("A7").value('Giảng viên: ' + class_has_course.lecturers);
                 workbook.sheet(0).cell("H7").value('Phòng: ');
                 
                 workbook.sheet(0).cell("A9").value("STT").style("border", true);
-                workbook.sheet(0).cell("B9").value("ID").style("border", true);
+                workbook.sheet(0).cell("B9").value("MSSV").style("border", true);
                 workbook.sheet(0).cell("C9").value("Họ SV").style("border", true);
                 workbook.sheet(0).cell("D9").value("Tên SV").style("border", true);
                 workbook.sheet(0).cell("E9").value("Số tờ").style("border", true);
@@ -159,7 +159,7 @@ export class ExcelService {
                     workbook.sheet(0).cell("I" + Math.floor(i + 10)).value('').style("border", true);
                 }
 
-                workbook.sheet(0).cell("A" + Math.floor(student_list.length + 12)).value('Teacher: ...................................');
+                workbook.sheet(0).cell("A" + Math.floor(student_list.length + 12)).value('Giảng viên: ...................................');
                 workbook.sheet(0).cell("A" + Math.floor(student_list.length + 13)).value('Ngày: ................................');
 
                 workbook.sheet(0).range("A3:I3").merged(true);
@@ -190,11 +190,11 @@ export class ExcelService {
             XlsxPopulate.fromBlankAsync()
             .then(workbook => {
                 workbook.sheet(0).cell("A1").value('Danh Sách Sinh Viên Môn ' + class_has_course.code + ' - ' + class_has_course.name);
-                workbook.sheet(0).cell("A2").value("semester: " + class_has_course.semester);
-                workbook.sheet(0).cell("A3").value('Teacher: ' + class_has_course.lecturers);
+                workbook.sheet(0).cell("A2").value("Học kỳ: " + class_has_course.semester);
+                workbook.sheet(0).cell("A3").value('Giảng viên: ' + class_has_course.lecturers);
                 
                 workbook.sheet(0).cell("A5").value("STT").style("border", true);
-                workbook.sheet(0).cell("B5").value("ID").style("border", true);
+                workbook.sheet(0).cell("B5").value("MSSV").style("border", true);
                 workbook.sheet(0).cell("C5").value("Họ SV").style("border", true);
                 workbook.sheet(0).cell("D5").value("Tên SV").style("border", true);
                 workbook.sheet(0).cell("E5").value("Số buổi vắng").style("border", true);
@@ -206,7 +206,7 @@ export class ExcelService {
                     workbook.sheet(0).cell("C" + Math.floor(i + 6)).value(student_list[i].first_name).style("border", true);
                     workbook.sheet(0).cell("D" + Math.floor(i + 6)).value(student_list[i].last_name).style("border", true);
                     if(student_list[i].exemption){
-                        workbook.sheet(0).cell("E" + Math.floor(i + 6)).value('Free of charge').style("border", true).style("fontColor",'ff0000');
+                        workbook.sheet(0).cell("E" + Math.floor(i + 6)).value('Miễn điểm danh').style("border", true).style("fontColor",'ff0000');
                         workbook.sheet(0).range("E" + Math.floor(i + 6) + ":" + "F" + Math.floor(i + 6)).merged(true);
                     }else{
                         if(student_list[i].absent_percentage > 30){
@@ -275,7 +275,7 @@ export class ExcelService {
                 workbook.sheet(0).cell("A1").value("STT").style("border", true);
                 workbook.sheet(0).cell("B1").value("Họ").style("border", true);
                 workbook.sheet(0).cell("C1").value("Tên").style("border", true);
-                workbook.sheet(0).cell("D1").value("Phone").style("border", true);
+                workbook.sheet(0).cell("D1").value("SĐT").style("border", true);
                 workbook.sheet(0).cell("E1").value("Email").style("border", true);
                 for (var i = 0; i < teacher_list.length; i++) {
                     workbook.sheet(0).cell("A" + Math.floor(i + 2)).value(i + 2).style("border", true);
@@ -499,7 +499,7 @@ export class ExcelService {
                 workbook.sheet(0).cell("A11").value("STT").style("border", true).style("bold",true);
                 workbook.sheet(0).cell("B11").value("Mã môn").style("border", true).style("bold",true);
                 workbook.sheet(0).cell("C11").value("Tên môn").style("border", true).style("bold",true);
-                workbook.sheet(0).cell("D11").value("Class").style("border", true).style("bold",true);
+                workbook.sheet(0).cell("D11").value("Lớp").style("border", true).style("bold",true);
                 workbook.sheet(0).cell("E11").value("GV Lý Thuyết").style("border", true).style("bold",true);
                 workbook.sheet(0).cell("F11").value("Trợ giảng").style("border", true).style("bold",true);
                 workbook.sheet(0).cell("G11").value("Office hour").style("border", true).style("bold",true);
@@ -614,7 +614,7 @@ export class ExcelService {
             workbook.sheet(0).cell("A11").value("STT").style("border", true).style("bold",true);
             workbook.sheet(0).cell("B11").value("Mã môn").style("border", true).style("bold",true);
             workbook.sheet(0).cell("C11").value("Tên môn").style("border", true).style("bold",true);
-            workbook.sheet(0).cell("D11").value("Class").style("border", true).style("bold",true);
+            workbook.sheet(0).cell("D11").value("Lớp").style("border", true).style("bold",true);
             workbook.sheet(0).cell("E11").value("GV Lý Thuyết").style("border", true).style("bold",true);
             workbook.sheet(0).cell("F11").value("Trợ giảng").style("border", true).style("bold",true);
             workbook.sheet(0).cell("G11").value("Office hour").style("border", true).style("bold",true);
@@ -756,20 +756,20 @@ export class ExcelService {
                 workbook.sheet(0).range("A2:X2").merged(true);
 
                 workbook.sheet(0).cell("A4").value("STT").style("border", true).style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("B4").value("ID").style("border", true).style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("C4").value("Name").style("border", true).style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("B4").value("MSSV").style("border", true).style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("C4").value("Họ Tên").style("border", true).style("horizontalAlignment", "center").style("bold",true);
                 workbook.sheet(0).column("C").width(30);
-                workbook.sheet(0).cell("D4").value("Week 1").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("F4").value("Week 2").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("H4").value("Week 3").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("J4").value("Week 4").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("L4").value("Week 5").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("N4").value("Week 6").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("P4").value("Week 7").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("R4").value("Week 8").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("T4").value("Week 9").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("V4").value("Week 10").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("X4").value("Week 11").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("D4").value("Tuần 1").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("F4").value("Tuần 2").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("H4").value("Tuần 3").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("J4").value("Tuần 4").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("L4").value("Tuần 5").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("N4").value("Tuần 6").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("P4").value("Tuần 7").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("R4").value("Tuần 8").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("T4").value("Tuần 9").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("V4").value("Tuần 10").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("X4").value("Tuần 11").style("horizontalAlignment", "center").style("bold",true);
                 var cell = ['D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y'];
                 for (var i = 0; i < attendance_list.length; i++) {
                     workbook.sheet(0).cell("A" + Math.floor(i + 5)).value(i + 1).style("border", true);
@@ -821,35 +821,35 @@ export class ExcelService {
             var class_has_course = class_has_courses[index];
             XlsxPopulate.fromBlankAsync()
             .then(workbook => {
-                workbook.sheet(0).cell("A1").value('Checking Attendence ' + class_has_course.code + ' - ' + class_has_course.name).style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("A1").value('Danh Sách Điểm Danh Môn ' + class_has_course.code + ' - ' + class_has_course.name).style("horizontalAlignment", "center").style("bold",true);
                 workbook.sheet(0).range("A1:L1").merged(true);
-                workbook.sheet(0).cell("A2").value("semester: " + class_has_course.semester);
+                workbook.sheet(0).cell("A2").value("Học kỳ: " + class_has_course.semester);
                 workbook.sheet(0).range("A2:L2").merged(true);
-                workbook.sheet(0).cell("A3").value('Teacher: ' + class_has_course.lecturers);
+                workbook.sheet(0).cell("A3").value('Giảng viên: ' + class_has_course.lecturers);
                 workbook.sheet(0).range("A3:L3").merged(true);
                 
                 workbook.sheet(0).cell("A5").value("STT").style("border", true).style("bold",true);
-                workbook.sheet(0).cell("B5").value("ID").style("border", true).style("bold",true);
-                workbook.sheet(0).cell("C5").value("Name").style("border", true).style("bold",true);
+                workbook.sheet(0).cell("B5").value("MSSV").style("border", true).style("bold",true);
+                workbook.sheet(0).cell("C5").value("Họ Tên").style("border", true).style("bold",true);
                 workbook.sheet(0).column("C").width(30);
-                workbook.sheet(0).cell("D5").value("Week 1").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("F5").value("Week 2").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("H5").value("Week 3").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("J5").value("Week 4").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("L5").value("Week 5").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("N5").value("Week 6").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("P5").value("Week 7").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("R5").value("Week 8").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("T5").value("Week 9").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("V5").value("Week 10").style("horizontalAlignment", "center").style("bold",true);
-                workbook.sheet(0).cell("X5").value("Week 11").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("D5").value("Tuần 1").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("F5").value("Tuần 2").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("H5").value("Tuần 3").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("J5").value("Tuần 4").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("L5").value("Tuần 5").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("N5").value("Tuần 6").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("P5").value("Tuần 7").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("R5").value("Tuần 8").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("T5").value("Tuần 9").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("V5").value("Tuần 10").style("horizontalAlignment", "center").style("bold",true);
+                workbook.sheet(0).cell("X5").value("Tuần 11").style("horizontalAlignment", "center").style("bold",true);
 
                 for (var i = 0; i < student_list.length; i++) {
                     workbook.sheet(0).cell("A" + Math.floor(i + 6)).value(i + 1).style("border", true);
                     workbook.sheet(0).cell("B" + Math.floor(i + 6)).value(student_list[i].student_code).style("border", true);
                     workbook.sheet(0).cell("C" + Math.floor(i + 6)).value(student_list[i].first_name + ' ' + student_list[i].last_name).style("border", true);
                     if(student_list[i].exemption){
-                        workbook.sheet(0).cell("D" + Math.floor(i + 6)).value('Free of charge').style("border", true).style("fontColor",'ff0000').style("bold",true);
+                        workbook.sheet(0).cell("D" + Math.floor(i + 6)).value('Miễn điểm danh').style("border", true).style("fontColor",'ff0000').style("bold",true);
                         workbook.sheet(0).range("D" + Math.floor(i + 6) + ":" + "Y" + Math.floor(i + 6)).merged(true);
                     }else{     
                         var j = 0;
@@ -907,11 +907,11 @@ export class ExcelService {
             XlsxPopulate.fromBlankAsync()
             .then(workbook => {
                 workbook.sheet(0).cell("A1").value('Danh Sách Sinh Viên Vượt Quá Số Buổi Vắng Cho Phép Môn ' + class_has_course.code + ' - ' + class_has_course.name);
-                workbook.sheet(0).cell("A2").value("semester: " + class_has_course.semester);
-                workbook.sheet(0).cell("A3").value('Teacher: ' + class_has_course.lecturers);
+                workbook.sheet(0).cell("A2").value("Học kỳ: " + class_has_course.semester);
+                workbook.sheet(0).cell("A3").value('Giảng viên: ' + class_has_course.lecturers);
                 
                 workbook.sheet(0).cell("A5").value("STT").style("border", true);
-                workbook.sheet(0).cell("B5").value("ID").style("border", true);
+                workbook.sheet(0).cell("B5").value("MSSV").style("border", true);
                 workbook.sheet(0).cell("C5").value("Họ SV").style("border", true);
                 workbook.sheet(0).cell("D5").value("Tên SV").style("border", true);
                 workbook.sheet(0).cell("E5").value("Số buổi vắng").style("border", true);
@@ -923,7 +923,7 @@ export class ExcelService {
                     workbook.sheet(0).cell("C" + Math.floor(i + 6)).value(student_list[i].first_name).style("border", true);
                     workbook.sheet(0).cell("D" + Math.floor(i + 6)).value(student_list[i].last_name).style("border", true);
                     if(student_list[i].exemption){
-                        workbook.sheet(0).cell("E" + Math.floor(i + 6)).value('Free of charge').style("border", true).style("fontColor",'ff0000');
+                        workbook.sheet(0).cell("E" + Math.floor(i + 6)).value('Miễn điểm danh').style("border", true).style("fontColor",'ff0000');
                         workbook.sheet(0).range("E" + Math.floor(i + 6) + ":" + "F" + Math.floor(i + 6)).merged(true);
                     }else{
                         if(student_list[i].absent_percentage > 30){

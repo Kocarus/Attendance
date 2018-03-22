@@ -463,7 +463,7 @@ export class CourseDetailStaffComponent implements OnInit {
                     margin: [0, 10, 0, 5]
                 },
                 tableExample: {
-                    margin: [0, 5, 0, 15]
+                    margin: [0, 5, 0, 5]
                 },
                 tableHeader: {
                     bold: true,
@@ -479,8 +479,8 @@ export class CourseDetailStaffComponent implements OnInit {
         
         for (var i = 0; i < this.attendance_list.length; i++){
             var item = [i+1, this.attendance_list[i].code, this.attendance_list[i].name]
-            // for(var i = 1 ;i<= 11;i++)
-            //     item.push('')
+            for(var i = 1 ;i<= 6;i++)
+                item.push('')
             dd.content[2]['table'].body.push(item)
 
         }

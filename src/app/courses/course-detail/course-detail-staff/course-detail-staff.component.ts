@@ -415,15 +415,75 @@ export class CourseDetailStaffComponent implements OnInit {
         for (let i = 0; i < this.lecturers.length; i++){
             lecturers += this.lecturers[i].first_name + ' ' + this.lecturers[i].last_name + '\r\n';
         }
-
-        var docDefinition = { content: 'This is an sample PDF printed with pdfMake' };
-        pdfMake.createPdf(docDefinition).download();
-
-
-        // this.excelService.writeAttendanceList(
+// this.excelService.writeAttendanceList(
         //     this.attendance_list,
-        //     this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')',
+        var file_name = this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')'
         //     lecturers
         //     );
+        var dd = {
+            content: [
+                {text: 'Danh sách điểm danh ' + file_name , style: 'header'},
+                {text: 'Column/row spans', style: 'subheader'},
+                'Each cell-element can set a rowSpan or colSpan',
+                {
+                    style: 'tableExample',
+                    color: '#444',
+                    table: {
+                        widths: [150, 'auto', 'auto'],
+                        headerRows: 2,
+                        // keepWithHeaderRows: 1,
+                        body: [
+                            [ {text: 'Họ tên', style: 'tableHeader', alignment: 'center'},
+                               {text: 'Week 1', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                               {}],
+                            ['Võ Anh Thuy', {image: './circle.png',
+                                                    fit: [15, 15]}, 
+                                           {image: './circle.png',
+                                             fit: [15, 15]}],
+                            ['Nguyễn Đăng Dao', 'X', 'X'],
+                            ['Nguyễn Hoàng Phúc Uoc', 'A', 'A'],
+                            ['Trần Quang Xuân', 'X', 'X'],
+                            ['Lâm Gia Huong', 'A', 'A'],
+                            ['Nguyễn Trần Duy Khoang', 'X', 'X'],
+                            ['Võ Thành Đăng Khoa', 'A', 'A'],
+                            ['Hoàng Van', 'X', 'X'],
+                            ['Chương Thế Don', 'A', 'A'],
+                            ['Võ Hồng Liên', 'A', 'X'],
+                            ['Triệu Quốc Lập', 'A', 'A']
+                        ]
+                    }
+                },
+            ],
+            
+            styles: {
+                header: {
+                    fontSize: 18,
+                    bold: true,
+                    margin: [0, 0, 0, 10]
+                },
+                subheader: {
+                    fontSize: 16,
+                    bold: true,
+                    margin: [0, 10, 0, 5]
+                },
+                tableExample: {
+                    margin: [0, 5, 0, 15]
+                },
+                tableHeader: {
+                    bold: true,
+                    fontSize: 13,
+                    color: 'black'
+                },
+            },
+            defaultStyle: {
+                // alignment: 'justify'
+            }
+            
+        }
+        pdfMake.createPdf(dd).download();
+
+
+
+        
     }
 }

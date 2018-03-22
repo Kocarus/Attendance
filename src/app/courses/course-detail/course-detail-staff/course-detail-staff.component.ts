@@ -421,10 +421,11 @@ export class CourseDetailStaffComponent implements OnInit {
         //     lecturers
         //     );
         var dd = {
+            pageOrientation: 'landscape',
+            pageMargins: [ 5, 60, 5, 60 ],
             content: [
-                {text: 'Danh sách điểm danh ' + file_name , style: 'header'},
-                {text: 'Column/row spans', style: 'subheader'},
-                'Each cell-element can set a rowSpan or colSpan',
+                {text: 'Checking Attendend ' + file_name , style: 'header'},
+                {text: 'Teacher ' + lecturers, style: 'subheader'},
                 {
                     style: 'tableExample',
                     color: '#444',
@@ -433,26 +434,24 @@ export class CourseDetailStaffComponent implements OnInit {
                         headerRows: 2,
                         // keepWithHeaderRows: 1,
                         body: [
-                            [ {text: 'Họ tên', style: 'tableHeader', alignment: 'center'},
-                               {text: 'Week 1', style: 'tableHeader', colSpan: 2, alignment: 'center'},
-                               {}],
-                            ['Võ Anh Thuy', {image: './circle.png',
-                                                    fit: [15, 15]}, 
-                                           {image: './circle.png',
-                                             fit: [15, 15]}],
-                            ['Nguyễn Đăng Dao', 'X', 'X'],
-                            ['Nguyễn Hoàng Phúc Uoc', 'A', 'A'],
-                            ['Trần Quang Xuân', 'X', 'X'],
-                            ['Lâm Gia Huong', 'A', 'A'],
-                            ['Nguyễn Trần Duy Khoang', 'X', 'X'],
-                            ['Võ Thành Đăng Khoa', 'A', 'A'],
-                            ['Hoàng Van', 'X', 'X'],
-                            ['Chương Thế Don', 'A', 'A'],
-                            ['Võ Hồng Liên', 'A', 'X'],
-                            ['Triệu Quốc Lập', 'A', 'A']
+                            [ {text: 'No', style: 'tableHeader', alignment: 'center'},
+                            {text: 'ID', style: 'tableHeader', alignment: 'center'},
+                            {text: 'Name', style: 'tableHeader', alignment: 'center'},
+                            { text: 'Week 1', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 2', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 3', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 4', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 5', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 6', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 7', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 8', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 9', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 11', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            { text: 'Week 11', style: 'tableHeader', colSpan: 2, alignment: 'center'},
+                            ]
                         ]
                     }
-                },
+                }
             ],
             
             styles: {
@@ -479,6 +478,12 @@ export class CourseDetailStaffComponent implements OnInit {
                 // alignment: 'justify'
             }
             
+        }
+        
+        for (var i = 0; i < this.attendance_list.length; i++){
+            var item = [i+1, this.attendance_list[i].code, this.attendance_list[i].name]
+            console.log(item)
+            dd.content[2].table.body.push(item)
         }
         pdfMake.createPdf(dd).download();
 

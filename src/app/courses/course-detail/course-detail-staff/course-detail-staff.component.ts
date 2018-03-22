@@ -482,8 +482,9 @@ export class CourseDetailStaffComponent implements OnInit {
         
         for (var i = 0; i < this.attendance_list.length; i++){
             var item = [i+1, this.attendance_list[i].code, this.attendance_list[i].name]
-            console.log(item)
+            console.log(dd.content[2]['table'].body.length)
             dd.content[2]['table'].body.push(item)
+
         }
         pdfMake.createPdf(dd).download();
 

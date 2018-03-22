@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CourseService, StudentService, AttendanceService, AppService, EditScheduleModalComponent,
  ScheduleService, ResultMessageModalComponent, AuthService, ExcelService, ImportModalComponent } from '../../../shared/shared.module';
- import pdfMake from "pdfmake/build/pdfmake";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
  declare let jQuery: any;
 @Component({
     selector: 'course-detail-staff',

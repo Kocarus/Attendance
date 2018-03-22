@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CourseService, StudentService, AttendanceService, AppService, EditScheduleModalComponent,
  ScheduleService, ResultMessageModalComponent, AuthService, ExcelService, ImportModalComponent } from '../../../shared/shared.module';
-declare let jQuery: any;
+ import pdfMake from "pdfmake/build/pdfmake";
+ declare let jQuery: any;
 @Component({
     selector: 'course-detail-staff',
     templateUrl: './course-detail-staff.component.html'
@@ -412,10 +413,15 @@ export class CourseDetailStaffComponent implements OnInit {
         for (let i = 0; i < this.lecturers.length; i++){
             lecturers += this.lecturers[i].first_name + ' ' + this.lecturers[i].last_name + '\r\n';
         }
-        this.excelService.writeAttendanceList(
-            this.attendance_list,
-            this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')',
-            lecturers
-            );
+
+        var docDefinition = { content: 'This is an sample PDF printed with pdfMake' };
+        pdfMake.createPdf(docDefinition).download();
+
+
+        // this.excelService.writeAttendanceList(
+        //     this.attendance_list,
+        //     this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')',
+        //     lecturers
+        //     );
     }
 }

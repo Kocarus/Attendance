@@ -808,10 +808,10 @@ export class ExcelService {
                 workbook.sheet(0).range("V4:W4").merged(true).style("border", true);
                 workbook.sheet(0).range("X4:Y4").merged(true).style("border", true);
                 const range = workbook.sheet(0).range("A1:Y"+Math.floor(attendance_list.length+5));
-                return workbook.outputAsync( {contentType: 'arraybuffer'} )
+                return workbook.outputAsync()
                     .then(function (blob) {
                         if (file_name == '') file_name = 'attendance_list';
-                        FileSaver.saveAs(blob, file_name + ".pdf");
+                        FileSaver.saveAs(blob, file_name + ".xlsx");
                     });
             });
     }

@@ -422,7 +422,7 @@ export class CourseDetailStaffComponent implements OnInit {
         //     );
         var dd = {
             pageOrientation: 'landscape',
-            pageMargins: [ 5, 60, 5, 60 ],
+            pageMargins: [ 5, 5, 5, 5 ],
             content: [
                 {text: 'Checking Attendend ' + file_name , style: 'header'},
                 {text: 'Teacher ' + lecturers, style: 'subheader'},
@@ -430,9 +430,6 @@ export class CourseDetailStaffComponent implements OnInit {
                     style: 'tableExample',
                     color: '#444',
                     table: {
-                        widths: [150, 'auto', 'auto'],
-                        headerRows: 2,
-                        // keepWithHeaderRows: 1,
                         body: [
                             [ {text: 'No', style: 'tableHeader', alignment: 'center'},
                             {text: 'ID', style: 'tableHeader', alignment: 'center'},
@@ -470,7 +467,7 @@ export class CourseDetailStaffComponent implements OnInit {
                 },
                 tableHeader: {
                     bold: true,
-                    fontSize: 13,
+                    fontSize: 12,
                     color: 'black'
                 },
             },
@@ -557,10 +554,6 @@ var ddd = {
 	}
 	
 }
-        pdfMake.createPdf(ddd).download();
-
-
-
-        
+        pdfMake.createPdf(dd).download();
     }
 }

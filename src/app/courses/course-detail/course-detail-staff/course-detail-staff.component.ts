@@ -432,7 +432,7 @@ export class CourseDetailStaffComponent implements OnInit {
                     table: {
                         body: [
                             [ {text: 'No', style: 'tableHeader', alignment: 'center'},
-                            {text: 'I', style: 'tableHeader', alignment: 'center'},
+                            {text: 'ID', style: 'tableHeader', alignment: 'center'},
                             {text: 'Name', style: 'tableHeader', alignment: 'center'},
                             { text: 'Week 1', style: 'tableHeader', colSpan: 2, alignment: 'center'},
                             '',
@@ -488,9 +488,9 @@ export class CourseDetailStaffComponent implements OnInit {
             
         }
         
-        for (var i = 0; i < this.attendance_list.length; i++){
-            var item = [i+1, this.attendance_list[i].code, this.attendance_list[i].name]
-            for(var i = 1 ;i<= 22;i++)
+        for (let i = 0; i < this.attendance_list.length; i++){
+            const item = [i+1, this.attendance_list[i].code, this.attendance_list[i].name]
+            for(let i = 1 ;i<= 22;i++)
                 item.push('')
             dd.content[2]['table'].body.push(item)
 

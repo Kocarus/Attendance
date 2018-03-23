@@ -490,8 +490,8 @@ export class CourseDetailStaffComponent implements OnInit {
         
         for (var i = 0; i < this.attendance_list.length; i++){
             var item = [i+1, this.attendance_list[i].code, this.attendance_list[i].name]
-            for(var i = 1 ;i<= 22;i++)
-                item.push('')
+            // for(var i = 1 ;i<= 22;i++)
+            //     item.push('')
             dd.content[2]['table'].body.push(item)
 
         }

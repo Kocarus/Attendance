@@ -434,7 +434,7 @@ export class CourseDetailStaffComponent implements OnInit {
                     ]
                 },
                 {
-                    qr : '',
+                    qr : file_name,
                     width: 'auto'
                 } 
             ]
@@ -471,7 +471,12 @@ export class CourseDetailStaffComponent implements OnInit {
                             { text: 'Week 11', style: 'tableHeader', colSpan: 2},
                             ''
                             ]
-                        ]
+                        ],
+                    },
+                    layout: {
+                        hLineWidth: function (i, node) {
+                            return (i === 0 || i == 1 || i === node.table.body.length) ? 2 : 0
+                        }
                     }
                 }
             ],
@@ -515,8 +520,8 @@ export class CourseDetailStaffComponent implements OnInit {
                 })
             dd.content[1]['table'].body.push(item)
         }
-        console.log(dd.content[0]['columns'][1]['qr'])
-        dd.content[0]['columns'][1]['qr'] = qrcontent
+        // console.log(dd.content[0]['columns'][1]['qr'])
+        // dd.content[0]['columns'][1]['qr'] = qrcontent
 
 
         // playground requires you to assign document definition to a variable called dd

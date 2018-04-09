@@ -415,11 +415,18 @@ export class CourseDetailStaffComponent implements OnInit {
         for (let i = 0; i < this.lecturers.length; i++){
             lecturers += this.lecturers[i].first_name + ' ' + this.lecturers[i].last_name + '\r\n';
         }
-// this.excelService.writeAttendanceList(
-        //     this.attendance_list,
-        var file_name = this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')'
-        //     lecturers
-        //     );
+        this.excelService.writeAttendanceList(
+            this.attendance_list,
+            this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')',
+            lecturers
+            );
+    }
+    public onTemplateAttendanceList(){
+        let lecturers = '';
+        for (let i = 0; i < this.lecturers.length; i++){
+            lecturers += this.lecturers[i].first_name + ' ' + this.lecturers[i].last_name + '\r\n';
+        }
+        var file_name = this.course['code'] + ' - ' + this.course['name'] + ' - ' + this.class_has_course[this.selected_class_index].class_name + ' (' + this.course['semester_name'] + ')'        
         var dd = {
             pageOrientation: 'landscape',
             pageMargins: [ 10, 10, 10, 10 ],

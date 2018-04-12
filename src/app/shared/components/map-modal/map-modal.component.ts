@@ -23,6 +23,7 @@ export class MapModalComponent implements OnInit {
     }
     public onOpenModal() {
         jQuery("#mapModal").modal({backdrop: 'static', keyboard: false});
+        this.resizeMap()      
     }
 
     resizeMap(): any {

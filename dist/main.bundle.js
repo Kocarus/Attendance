@@ -3125,6 +3125,7 @@ var MapModalComponent = (function () {
     };
     MapModalComponent.prototype.onOpenModal = function () {
         jQuery("#mapModal").modal({ backdrop: 'static', keyboard: false });
+        this.resizeMap();
     };
     MapModalComponent.prototype.resizeMap = function () {
         this.map.triggerResize();

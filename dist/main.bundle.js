@@ -3118,12 +3118,16 @@ var MapModalComponent = (function () {
         this.lng = 7.809007;
     }
     MapModalComponent.prototype.ngOnInit = function () {
+        this.resizeMap();
     };
     MapModalComponent.prototype.onCloseMap = function () {
         jQuery("#mapModal").modal("hide");
     };
     MapModalComponent.prototype.onOpenModal = function () {
         jQuery("#mapModal").modal({ backdrop: 'static', keyboard: false });
+    };
+    MapModalComponent.prototype.resizeMap = function () {
+        this.map.triggerResize();
     };
     MapModalComponent.ctorParameters = function () { return []; };
     return MapModalComponent;

@@ -6,7 +6,7 @@
                     <h4 class="modal-title">{{title}}</h4>
                 </div>
                 <div class="modal-body">
-                    <agm-map [latitude]="lat" [longitude]="lng"
+                    <agm-map #map [latitude]="lat" [longitude]="lng"
                     [zoom]="zoom"
                     [disableDefaultUI]="false"
                     [zoomControl]="false">

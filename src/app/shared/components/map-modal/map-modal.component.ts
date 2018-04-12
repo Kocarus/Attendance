@@ -1,5 +1,6 @@
-import { Component , EventEmitter, Output, Input, OnInit} from '@angular/core';
+import { Component , EventEmitter, Output, Input, OnInit, ViewChild} from '@angular/core';
 declare var jQuery: any;
+import { MapsAPILoader, AgmMap } from '@agm/core';
 
 @Component({
   selector: 'map-modal',
@@ -8,9 +9,11 @@ declare var jQuery: any;
 
 })
 export class MapModalComponent implements OnInit {
+    @ViewChild('map') map: AgmMap;
     public constructor() { }
     zoom: number = 10;
     ngOnInit(): void {
+        this.resizeMap();
     }
     lat: number = 51.678418;
     lng: number = 7.809007;
@@ -22,5 +25,8 @@ export class MapModalComponent implements OnInit {
         jQuery("#mapModal").modal({backdrop: 'static', keyboard: false});
     }
 
+    resizeMap(): any {
+        this.map.triggerResize();
+    }
 
 }

@@ -60,7 +60,10 @@
                     <button *ngIf="isEdittingAttendance" type="button" class="btn btn-primary btn-round" (click)="onImportAttendanceList()"> <i class="fa fa-upload"></i> Import</button>
                     <button type="button" class="btn btn-primary btn-round" (click)="onExportAttendanceList()"> <i class="fa fa-download"></i> Export</button>
                     <button type="button" class="btn btn-primary btn-round" (click)="onTemplateAttendanceList()"> <i class="fa fa-download"></i> Template</button>
-                    <a class="btn btn-primary btn-round" href="map-view.html"><button type="button"> GPS History</button></a>
+                    <div class = "btn btn-primary btn-round">
+                    	<a href="map-view.html"></a>
+                    	<button type="button">GPS History</button>
+                    </div>
                 </div>
                 <ul class="nav nav-tabs" *ngIf="class_has_course.length > 1">
                       <li *ngFor="let class of class_has_course; let i = index" [ngClass]="{'active': i == selected_class_index}" (click)="onChangeClass(i)"><a>{{class.class_name}}</a></li>

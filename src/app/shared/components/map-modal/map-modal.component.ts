@@ -9,6 +9,7 @@ declare var jQuery: any;
 })
 export class MapModalComponent implements OnInit {
     public constructor() { }
+    zoom: number = 10;
     ngOnInit(): void {
     }
     lat: number = 51.678418;

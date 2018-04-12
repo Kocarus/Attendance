@@ -87,7 +87,7 @@ export {NotificationService};
             storageType: 'localStorage'
         }),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDZGNmimnwvXNX_9t_iU3cDSbqbllAEg8o'
+      apiKey: 'AIzaSyAaHGDoehkovVBMyKmJL1Q-7-4wZRYpqVg'
     }),
     FileUploadModule,
     TooltipModule.forRoot(),

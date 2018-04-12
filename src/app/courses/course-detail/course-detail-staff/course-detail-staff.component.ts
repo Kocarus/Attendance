@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CourseService, StudentService, AttendanceService, AppService, EditScheduleModalComponent,
- ScheduleService, ResultMessageModalComponent, AuthService, ExcelService, ImportModalComponent } from '../../../shared/shared.module';
+ ScheduleService, ResultMessageModalComponent, AuthService, ExcelService, ImportModalComponent, MapModalComponent } from '../../../shared/shared.module';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -409,6 +409,16 @@ export class CourseDetailStaffComponent implements OnInit {
         this.import_title = 'Load Attendance List For' + this.class_has_course[this.selected_class_index].class_name;
         this.importModal.onOpenModal();
     }
+    
+    
+    public map_title;
+    @ViewChild(MapModalComponent)
+    public  mapModal: MapModalComponent;
+    public onMapAttendanceList(){
+        this.map_title = 'Load Location List For' + this.class_has_course[this.selected_class_index].class_name;
+        this.mapModal.onOpenModal();
+    }
+    
 
     public onExportAttendanceList(){
         let lecturers = '';

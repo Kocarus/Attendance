@@ -17,6 +17,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.2",
     "@angular/cli": "1.2.6",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
@@ -31,6 +32,7 @@
     "@ngx-translate/http-loader": "^1.0.2",
     "@swimlane/ngx-datatable": "^9.0.0",
     "@types/file-saver": "0.0.1",
+    "@types/googlemaps": "^3.30.8",
     "@types/jszip": "0.0.33",
     "@types/socket.io-client": "^1.4.29",
     "@types/xlsx": "0.0.34",

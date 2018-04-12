@@ -8,6 +8,8 @@ import {TranslateModule} from '@ngx-translate/core';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import {FileUploadModule} from "ng2-file-upload";
 import { AppConfig } from './config'
+import { AgmCoreModule } from '@agm/core';
+
 export {AppConfig};
 
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
@@ -21,6 +23,8 @@ import { ResultMessageModalComponent } from './components/result-message-modal/r
 export { ResultMessageModalComponent };
 import { ImportModalComponent } from './components/import-modal/import-modal.component';
 export { ImportModalComponent };
+import { MapModalComponent } from './components/map-modal/map-modal.component';
+export { MapModalComponent };
 import { ExportModalComponent } from './components/export-modal/export-modal.component';
 export { ExportModalComponent };
 import { CreateAbsenceRequestModalComponent } from './components/create-absence-request-modal/create-absence-request-modal.component';
@@ -82,6 +86,9 @@ export {NotificationService};
             prefix: 'qldd',
             storageType: 'localStorage'
         }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB0Y30OOiXKU_QE7fC0iTIEzxIvuWvL_68'
+    }),
     FileUploadModule,
     TooltipModule.forRoot(),
     TranslateModule
@@ -94,6 +101,7 @@ export {NotificationService};
     EditScheduleModalComponent,
     ResultMessageModalComponent,
     ImportModalComponent,
+    MapModalComponent,
     CreateAbsenceRequestModalComponent,
     SendFeedbackModalComponent,
     ExportModalComponent,
@@ -108,6 +116,7 @@ export {NotificationService};
     EditScheduleModalComponent,
     ResultMessageModalComponent,
     ImportModalComponent,
+    MapModalComponent,
     CreateAbsenceRequestModalComponent,
     SendFeedbackModalComponent,
     ExportModalComponent,

@@ -1,0 +1,19 @@
+<div class="modal fade" id="mapModal" role="dialog">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <agm-map [latitude]="lat" [longitude]="lng">
+                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                    </agm-map>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" (click)="onCloseMap()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

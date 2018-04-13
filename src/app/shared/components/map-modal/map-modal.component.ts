@@ -15,6 +15,11 @@ export class MapModalComponent implements OnInit {
     ngOnInit(): void {
         this.resizeMap();
     }
+
+    ngOnChanges(): void {
+        setTimeout(() => {this.map.triggerResize();},500)
+    }
+
     lat: number = 51.678418;
     lng: number = 7.809007;
     @Input() public title : string;
@@ -29,5 +34,4 @@ export class MapModalComponent implements OnInit {
     resizeMap(): any {
         this.map.triggerResize();
     }
-
 }

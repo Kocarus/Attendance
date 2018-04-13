@@ -3120,6 +3120,10 @@ var MapModalComponent = (function () {
     MapModalComponent.prototype.ngOnInit = function () {
         this.resizeMap();
     };
+    MapModalComponent.prototype.ngOnChanges = function () {
+        var _this = this;
+        setTimeout(function () { _this.map.triggerResize(); }, 500);
+    };
     MapModalComponent.prototype.onCloseMap = function () {
         jQuery("#mapModal").modal("hide");
     };

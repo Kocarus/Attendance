@@ -12,7 +12,14 @@ import { MapService} from '../../shared.module';
 })
 export class MapModalComponent implements OnInit {
     @ViewChild('map') map: AgmMap;
-    public constructor(public mapService: MapService) { }
+    public constructor(public mapService: MapService) { 
+        mapService.getMap().subscribe(result=>{
+            console.log(result)
+        }
+        ,error=>{
+            console.log(error)
+        })
+    }
     zoom: number = 10;
     ngOnInit(): void {
         this.resizeMap();

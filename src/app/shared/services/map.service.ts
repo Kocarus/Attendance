@@ -10,13 +10,11 @@ export class MapService {
     constructor(public  http: Http, public  appConfig: AppConfig, public  authService: AuthService, public  router: Router) {}
     public  getMapUrl = 'http://checkingattendance.000webhostapp.com/LogAPI/getLog.php';
     public getMap(): Observable < { result: string, message: string} > {
-        var params = {
-        };
         let authToken = this.authService.token;
         let headers = new Headers();
         headers.append('x-access-token', `${authToken}`);
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(this.getMapUrl, params, options)
+        return this.http.get(this.getMapUrl)
             // ...and calling .json() on the response to return data
             .map((res: Response) => res.toString())
             //...errors if any

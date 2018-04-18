@@ -64,31 +64,6 @@ export class CourseDetailStaffComponent implements OnInit {
                 this.getAttendanceList();
             }
         }, error => { this.appService.showPNotify('failure', 'Server Error! Can\'t get course detail', 'error'); });
-
-        this.mapService.getMap().subscribe(result => {
-            let lines = result.toString().split('<br>')
-            for(let line in lines){
-                let logs = line.split('- Log: ')
-                if (logs.length == 2){
-                    let name = logs[0]
-                    let log = logs[1]
-                    if (log != ''){
-                        let students = log.split('$')
-                        for( let student in students){
-                            let objects = student.split(' - ')
-                            for (let object in objects){
-                                let atts = object.split(': ')
-                                if (atts[0] == 'Toa do')
-                                    console.log(atts)
-                            }
-                        }
-                    } else{
-                        console.log(log, name)
-                    }
-                }
-            }
-
-        }, error=> {this.appService.showPNotify('failure', 'Server Error! Can\'t get map', 'error');});
     }
 
     public onEditCourse() {

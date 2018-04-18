@@ -6,8 +6,16 @@
                     <h4 class="modal-title">{{title}}</h4>
                 </div>
                 <div class="modal-body">
-                    <agm-map #map [latitude]="lat" [longitude]="lng">
-                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                    <agm-map #map [latitude]="lat"
+                    [longitude]="lng"
+                    [zoom]="zoom"
+                    [disableDefaultUI]="false">
+                        <agm-marker 
+                        *ngFor="let m of markers; let i = index"
+                        [latitude]="m.lat"
+                        [longitude]="m.lng"
+                        [label]="m.label">
+                        </agm-marker>
                     </agm-map>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" (click)="onCloseMap()">Close</button>

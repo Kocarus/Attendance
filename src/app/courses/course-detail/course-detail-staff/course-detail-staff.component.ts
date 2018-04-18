@@ -406,7 +406,7 @@ export class CourseDetailStaffComponent implements OnInit {
         }
     }
     public onImportAttendanceList(){
-        this.import_title = 'Load Attendance List For' + this.class_has_course[this.selected_class_index].class_name;
+        this.import_title = 'Load Attendance List For ' + this.class_has_course[this.selected_class_index].class_name;
         this.importModal.onOpenModal();
     }
     
@@ -415,7 +415,7 @@ export class CourseDetailStaffComponent implements OnInit {
     @ViewChild(MapModalComponent)
     public  mapModal: MapModalComponent;
     public onMapAttendanceList(){
-        this.map_title = 'Load Location List For' + this.class_has_course[this.selected_class_index].class_name;
+        this.map_title = 'Load Location List For ' + this.class_has_course[this.selected_class_index].class_name;
         this.mapModal.onOpenModal();
     }
     

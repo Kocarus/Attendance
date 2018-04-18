@@ -23,8 +23,8 @@ export class MapModalComponent implements OnInit {
         setTimeout(() => {this.map.triggerResize();},500)
     }
 
-    lat: number = 10.7895719;
-    lng: number = 106.7024624;
+    lat: number = 10.762417;
+    lng: number = 106.681201;
     @Input() public title : string;
     public onCloseMap(){
         jQuery("#mapModal").modal("hide");
@@ -37,127 +37,22 @@ export class MapModalComponent implements OnInit {
         {
             lat: 10.7896335,
             lng: 106.7022943,
-            label: 'A'
+            label: '1'
         },
         {
             lat: 10.7895644,
             lng: 106.7024484,
-            label: 'A'
+            label: '3:5'
         },
         {
             lat: 10.7896215,
             lng: 106.7024325,
-            label: 'A'
+            label: '9'
         },
         {
             lat: 10.7893873,
             lng: 106.7025177,
-            label: 'A'
-        },
-        {
-            lat: 10.7892488,
-            lng: 106.7026373,
-            label: 'A'
-        },
-        {
-            lat: 10.789417,
-            lng: 106.7024676,
-            label: 'A'
-        },
-        {
-            lat: 10.7893667,
-            lng: 106.7025714,
-            label: 'A'
-        },
-        {
-            lat: 10.7624614,
-            lng: 106.6820569,
-            label: 'A'
-        },
-        {
-            lat: 10.7624665,
-            lng: 106.6820483,
-            label: 'A'
-        },
-        {
-            lat: 10.7896446,
-            lng: 106.7024325,
-            label: 'A'
-        },
-        {
-            lat: 10.7895719,
-            lng: 106.7024624,
-            label: 'A'
-        },
-        {
-            lat: 10.7891943,
-            lng: 106.7026637,
-            label: 'A'
-        },
-        {
-            lat: 10.7894951,
-            lng: 106.7024969,
-            label: 'A'
-        },
-        {
-            lat: 10.7894285,
-            lng: 106.702487,
-            label: 'A'
-        },
-        {
-            lat: 10.7624744,
-            lng: 106.6820169,
-            label: 'A'
-        },
-        {
-            lat: 10.7894693,
-            lng: 106.7025056,
-            label: 'A'
-        },
-        {
-            lat: 10.7894696,
-            lng: 106.7025362,
-            label: 'A'
-        },
-        {
-            lat: 10.789081,
-            lng: 106.7030663,
-            label: 'A'
-        },
-        {
-            lat: 10.7624814,
-            lng: 106.6820162,
-            label: 'A'
-        },
-        {
-            lat: 10.7895419,
-            lng: 106.7025147,
-            label: 'A'
-        },
-        {
-            lat: 10.7895437,
-            lng: 106.7024186,
-            label: 'A'
-        },
-        {
-            lat: 10.7896455,
-            lng: 106.7024372,
-            label: 'A'
-        },
-        {
-            lat: 10.7624774,
-            lng: 106.682046,
-            label: 'A'
-        },
-        {
-            lat: 10.7895408,
-            lng: 106.7024788,
-            label: 'A'
-        },
-        {
-            lat: 10.7894285,
-            lng: 106.7024873,
-            label: 'A'
+            label: '14,4'
         }
     ]
     resizeMap(): any {

@@ -12,13 +12,8 @@ import { MapService} from '../../shared.module';
 })
 export class MapModalComponent implements OnInit {
     @ViewChild('map') map: AgmMap;
-    public constructor(public mapService: MapService) { 
-        mapService.getMap().subscribe(result=>{
-            console.log(result)
-        }
-        ,error=>{
-            console.log(error)
-        })
+    public constructor() { 
+        
     }
     zoom: number = 10;
     ngOnInit(): void {
@@ -29,8 +24,8 @@ export class MapModalComponent implements OnInit {
         setTimeout(() => {this.map.triggerResize();},500)
     }
 
-    lat: number = 51.678418;
-    lng: number = 7.809007;
+    lat: number = 10.7895719;
+    lng: number = 106.7024624;
     @Input() public title : string;
     public onCloseMap(){
         jQuery("#mapModal").modal("hide");

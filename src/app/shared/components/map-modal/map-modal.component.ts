@@ -14,7 +14,7 @@ export class MapModalComponent implements OnInit {
     @ViewChild('map') map: AgmMap;
     public constructor() { 
     }
-    zoom: number = 17;
+    zoom: number = 15;
     ngOnInit(): void {
         this.resizeMap();
     }
@@ -37,22 +37,22 @@ export class MapModalComponent implements OnInit {
         {
             lat: 10.7896335,
             lng: 106.7022943,
-            label: '1'
+            text: '1'
         },
         {
             lat: 10.7895644,
             lng: 106.7024484,
-            label: '3:5'
+            text: '3:5'
         },
         {
             lat: 10.7896215,
             lng: 106.7024325,
-            label: '9'
+            text: '9'
         },
         {
             lat: 10.7893873,
             lng: 106.7025177,
-            label: '14,4'
+            text: '10,4'
         }
     ]
     resizeMap(): any {
@@ -63,5 +63,5 @@ export class MapModalComponent implements OnInit {
 interface marker {
 	lat: number;
 	lng: number;
-	label?: string;
+	text: string;
 }

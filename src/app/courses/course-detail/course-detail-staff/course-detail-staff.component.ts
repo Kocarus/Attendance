@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { CourseService, StudentService, AttendanceService, AppService, EditScheduleModalComponent,
+import { CourseService, StudentService, AttendanceService, AppService,MapService , EditScheduleModalComponent,
  ScheduleService, ResultMessageModalComponent, AuthService, ExcelService, ImportModalComponent, MapModalComponent } from '../../../shared/shared.module';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -34,7 +34,7 @@ export class CourseDetailStaffComponent implements OnInit {
 
     public constructor(public route: ActivatedRoute, public studentService: StudentService, public  router: Router,
         public  appService: AppService, public  courseService: CourseService, public  attendanceService: AttendanceService,
-         public  scheduleService: ScheduleService, public authService: AuthService,public excelService: ExcelService) {}
+         public  scheduleService: ScheduleService, public authService: AuthService,public excelService: ExcelService, public mapService: MapService) {}
 
     public getAttendanceList() {
         var classes_id: Array<number> = [];
@@ -64,6 +64,10 @@ export class CourseDetailStaffComponent implements OnInit {
                 this.getAttendanceList();
             }
         }, error => { this.appService.showPNotify('failure', 'Server Error! Can\'t get course detail', 'error'); });
+
+        this.mapService.getMap().subscribe(result => {
+            console.log(result)
+        }, error=> {this.appService.showPNotify('failure', 'Server Error! Can\'t get map', 'error');});
     }
 
     public onEditCourse() {

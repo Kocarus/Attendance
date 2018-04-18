@@ -14,7 +14,6 @@ import { SharedModule, PageNotFoundComponent, QRCodeComponent, AuthService, Auth
 import {TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
-import { MapComponent } from './map/map.component';
 
 const ROUTES = [
     { path: '', loadChildren: 'app/layout/layout.module#LayoutModule' }, 
@@ -34,7 +33,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
     declarations: [
-        MapComponent,
         AppComponent,
         LoginComponent,
         ForgotPasswordComponent,

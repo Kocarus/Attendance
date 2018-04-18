@@ -1,176 +1,122 @@
 webpackJsonp([12],{
 
-/***/ "../../../../../src/$$_gendir/app/statistic/statistic.component.ngfactory.ts":
+/***/ "../../../../../src/app/settings/setting.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-6 col-sm-6 col-xs-12\">\n    <div class=\"x_panel\">\n        <div class=\"x_title\">\n            <h4>Email</h4>\n            <div class=\"clearfix\"></div>\n        </div>\n        <div class=\"x_content\">\n            <div class=\"form-group form-horizontal\">\n                <div class=\"form-group\">\n                    <label class=\"control-label col-md-3 col-sm-3 col-xs-12\" for=\"first-name\">Host <span class=\"required\">*</span></label>\n                    <div class=\"col-md-9 col-sm-9 col-xs-12\">\n                        <select class=\"form-control\" name=\"host\" [(ngModel)]=\"settings['selected_host']\" (ngModelChange)=\"onChangeHost()\">\n                            <option *ngFor=\"let email of settings['emails']\" [value]=\"email.host_name\">{{email.host_name}}</option>\n                        </select>\n                    </div>\n                </div>\n                <div class=\"form-group\">\n                    <label class=\"control-label col-md-3 col-sm-3 col-xs-12\" for=\"first-name\">Email <span class=\"required\">*</span></label>\n                    <div class=\"col-md-9 col-sm-9 col-xs-12\">\n                        <input type=\"text\" name=\"email\" [(ngModel)]=\"settings['emails'][selected_email_index]['config']['auth']['user']\" class=\"form-control col-md-7 col-xs-12\">\n                    </div>\n                </div>\n                <div class=\"form-group\">\n                    <label class=\"control-label col-md-3 col-sm-3 col-xs-12\" for=\"first-name\">Password <span class=\"required\">*</span></label>\n                    <div class=\"col-md-9 col-sm-9 col-xs-12\">\n                        <input type=\"password\" name=\"password\" [(ngModel)]=\"settings['emails'][selected_email_index]['config']['auth']['pass']\" class=\"form-control col-md-7 col-xs-12\">\n                    </div>\n                </div>\n                <div class=\"form-group\">\n                    <label class=\"control-label col-md-3 col-sm-3 col-xs-12\" for=\"first-name\"> Signature <span class=\"required\">*</span></label>\n                    <div class=\"col-md-9 col-sm-9 col-xs-12\">\n                        <textarea class=\"form-control col-md-7 col-xs-12\" name=\"signature\" autosize rows=\"2\" style=\"resize: none;\" [(ngModel)]=\"settings['emails'][selected_email_index]['signature']\"></textarea>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<!-- <div class=\"col-md-6 col-sm-6 col-xs-12\">\n    <div class=\"x_panel\">\n        <div class=\"x_title\">\n            <h4>General</h4>\n            <div class=\"clearfix\"></div>\n        </div>\n        <div class=\"x_content\">\n            <div class=\"form-group form-horizontal\">\n                <div class=\"form-group\">\n                    <label class=\"control-label col-md-5 col-sm-6 col-xs-12\" for=\"first-name\">Auto close attendance time</label>\n                    <div class=\"col-md-3 col-sm-3 col-xs-12\">\n                        <input [textMask]=\"{mask: mask,guide:true,placeholderChar:'_'}\" class=\"form-control only_bottom_border\" [(ngModel)]=\"settings['auto_close_attendance_time']\" style=\"font-size: large;\">\n                    </div>\n                </div>\n                <br>\n            </div>\n        </div>\n    </div>\n</div> -->\n<div class=\"col-xs-12\">\n    <button class=\"btn btn-success pull-right\" (click)=\"saveSetting()\">Save</button>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/settings/setting.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_statistic_statistic_component__ = __webpack_require__("../../../../../src/app/statistic/statistic.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_components_export_modal_export_modal_component_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/app/shared/components/export-modal/export-modal.component.ngfactory.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_shared_components_export_modal_export_modal_component__ = __webpack_require__("../../../../../src/app/shared/components/export-modal/export-modal.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_shared_services_excel_service__ = __webpack_require__("../../../../../src/app/shared/services/excel.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_shared_services_app_service__ = __webpack_require__("../../../../../src/app/shared/services/app.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_shared_services_student_service__ = __webpack_require__("../../../../../src/app/shared/services/student.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_shared_services_teachers_service__ = __webpack_require__("../../../../../src/app/shared/services/teachers.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_shared_services_courses_service__ = __webpack_require__("../../../../../src/app/shared/services/courses.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_shared_services_schedule_service__ = __webpack_require__("../../../../../src/app/shared/services/schedule.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_shared_services_auth_service__ = __webpack_require__("../../../../../src/app/shared/services/auth.service.ts");
-/* unused harmony export RenderType_StatisticComponent */
-/* unused harmony export View_StatisticComponent_0 */
-/* unused harmony export View_StatisticComponent_Host_0 */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatisticComponentNgFactory; });
-/**
- * @fileoverview This file is generated by the Angular template compiler.
- * Do not edit.
- * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride}
- */
-/* tslint:disable */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
 
 
-
-
-
-
-
-
-
-
-var styles_StatisticComponent = [];
-var RenderType_StatisticComponent = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵcrt"]({ encapsulation: 2,
-    styles: styles_StatisticComponent, data: {} });
-function View_StatisticComponent_0(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵvid"](0, [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵqud"](402653184, 1, { exportModal: 0 }), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](1, 0, null, null, 53, 'div', [['class', 'col-md-12 col-sm-12 col-xs-12']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](3, 0, null, null, 50, 'div', [['class', 'x_panel']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](5, 0, null, null, 6, 'div', [['class', 'x_title']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](7, 0, null, null, 1, 'h3', [], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['Statistics Export'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](10, 0, null, null, 0, 'div', [['class', 'clearfix']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n        '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](13, 0, null, null, 39, 'div', [['class', 'x_content']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](15, 0, null, null, 36, 'div', [['class', 'col-xs-12']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](17, 0, null, null, 33, 'div', [['class', 'pad-top']], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](19, 0, null, null, 6, 'button', [['class', 'btn btn-primary button_icon_center'],
-            ['type', 'button']], null, [[null, 'click']], function (_v, en, $event) {
-            var ad = true;
-            var _co = _v.component;
-            if (('click' === en)) {
-                var pd_0 = (_co.onExportExamineesList() !== false);
-                ad = (pd_0 && ad);
+var SettingComponent = (function () {
+    function SettingComponent(scheduleService, appService, router, semesterService) {
+        this.scheduleService = scheduleService;
+        this.appService = appService;
+        this.router = router;
+        this.semesterService = semesterService;
+        this.mask = [/\d/, /\d/, ':', /\d/, /\d/];
+        this.settings = {
+            emails: [
+                {
+                    host_name: '',
+                    signature: '',
+                    config: {
+                        auth: {
+                            user: '',
+                            pass: ''
+                        }
+                    },
+                }
+            ]
+        };
+        this.selected_email_index = 0;
+    }
+    SettingComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.appService.getSettings().subscribe(function (result) {
+            _this.settings = result.settings;
+            console.log(_this.settings.emails);
+            _this.onChangeHost();
+        }, function (error) { _this.appService.showPNotify('failure', "Server Error! Can't get settings", 'error'); });
+    };
+    SettingComponent.prototype.onChangeHost = function () {
+        for (var i = 0; i < this.settings['emails'].length; i++) {
+            if (this.settings['emails'][i].host_name == this.settings['selected_host']) {
+                this.selected_email_index = i;
+                break;
             }
-            return ad;
-        }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                        '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](21, 0, null, null, 0, 'i', [['class', 'fa fa-address-book-o fa-3x']], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](23, 0, null, null, 1, 'h5', [['class', 'button_text']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['Examinees'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                    '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](27, 0, null, null, 6, 'button', [['class', 'btn btn-primary button_icon_center'],
-            ['type', 'button']], null, [[null, 'click']], function (_v, en, $event) {
-            var ad = true;
-            var _co = _v.component;
-            if (('click' === en)) {
-                var pd_0 = (_co.onExportAttendanceSummary() !== false);
-                ad = (pd_0 && ad);
+        }
+    };
+    SettingComponent.prototype.saveSetting = function () {
+        var _this = this;
+        this.appService.saveSettings(this.settings).subscribe(function (result) {
+            if (result.result == 'success') {
+                _this.appService.showPNotify('success', result.message, 'success');
             }
-            return ad;
-        }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                        '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](29, 0, null, null, 0, 'i', [['class', 'fa fa-percent fa-3x']], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](31, 0, null, null, 1, 'h5', [['class', 'button_text']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['Attendance Summary'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                    '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](35, 0, null, null, 6, 'button', [['class', 'btn btn-primary button_icon_center'],
-            ['type', 'button']], null, [[null, 'click']], function (_v, en, $event) {
-            var ad = true;
-            var _co = _v.component;
-            if (('click' === en)) {
-                var pd_0 = (_co.onExportExceededAbsence() !== false);
-                ad = (pd_0 && ad);
+            else {
+                _this.appService.showPNotify('failure', result.message, 'error');
             }
-            return ad;
-        }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                        '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](37, 0, null, null, 0, 'i', [['class', 'fa fa-warning fa-3x']], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](39, 0, null, null, 1, 'h5', [['class', 'button_text']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['Exceeded Absences Limit'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                    '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](43, 0, null, null, 6, 'button', [['class', 'btn btn-primary button_icon_center'],
-            ['type', 'button']], null, [[null, 'click']], function (_v, en, $event) {
-            var ad = true;
-            var _co = _v.component;
-            if (('click' === en)) {
-                var pd_0 = (_co.onExportAttendanceLists() !== false);
-                ad = (pd_0 && ad);
-            }
-            return ad;
-        }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                        '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](45, 0, null, null, 0, 'i', [['class', 'fa fa-calendar-check-o fa-3x']], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](47, 0, null, null, 1, 'h5', [['class', 'button_text']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['Attendance Lists'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                    '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n                '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n            '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n        '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵted"](-1, null, ['\n'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](56, 0, null, null, 1, 'export-modal', [], null, null, null, __WEBPACK_IMPORTED_MODULE_2__shared_components_export_modal_export_modal_component_ngfactory__["a" /* View_ExportModalComponent_0 */], __WEBPACK_IMPORTED_MODULE_2__shared_components_export_modal_export_modal_component_ngfactory__["b" /* RenderType_ExportModalComponent */])),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](57, 114688, [[1, 4]], 0, __WEBPACK_IMPORTED_MODULE_3__app_shared_components_export_modal_export_modal_component__["a" /* ExportModalComponent */], [__WEBPACK_IMPORTED_MODULE_4__app_shared_services_excel_service__["a" /* ExcelService */], __WEBPACK_IMPORTED_MODULE_5__app_shared_services_app_service__["a" /* AppService */],
-            __WEBPACK_IMPORTED_MODULE_6__app_shared_services_student_service__["a" /* StudentService */], __WEBPACK_IMPORTED_MODULE_7__app_shared_services_teachers_service__["a" /* TeacherService */], __WEBPACK_IMPORTED_MODULE_8__app_shared_services_courses_service__["a" /* CourseService */], __WEBPACK_IMPORTED_MODULE_9__app_shared_services_schedule_service__["a" /* ScheduleService */]], { title: [0, 'title'], export_type: [1, 'export_type'] }, null)], function (_ck, _v) {
-        var _co = _v.component;
-        var currVal_0 = _co.export_title;
-        var currVal_1 = _co.export_type;
-        _ck(_v, 57, 0, currVal_0, currVal_1);
-    }, null);
-}
-function View_StatisticComponent_Host_0(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵvid"](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵeld"](0, 0, null, null, 1, 'app-statistic', [], null, null, null, View_StatisticComponent_0, RenderType_StatisticComponent)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵdid"](1, 114688, null, 0, __WEBPACK_IMPORTED_MODULE_1__app_statistic_statistic_component__["a" /* StatisticComponent */], [__WEBPACK_IMPORTED_MODULE_5__app_shared_services_app_service__["a" /* AppService */], __WEBPACK_IMPORTED_MODULE_10__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_4__app_shared_services_excel_service__["a" /* ExcelService */]], null, null)], function (_ck, _v) {
-        _ck(_v, 1, 0);
-    }, null);
-}
-var StatisticComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵccf"]('app-statistic', __WEBPACK_IMPORTED_MODULE_1__app_statistic_statistic_component__["a" /* StatisticComponent */], View_StatisticComponent_Host_0, {}, {}, []);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiRzovQ2Fwc3RvbmUvR2l0aHViL0F0dGVuZGFuY2VfSGVyb2t1X0ZpbmFsL3NyYy9hcHAvc3RhdGlzdGljL3N0YXRpc3RpYy5jb21wb25lbnQubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vRzovQ2Fwc3RvbmUvR2l0aHViL0F0dGVuZGFuY2VfSGVyb2t1X0ZpbmFsL3NyYy9hcHAvc3RhdGlzdGljL3N0YXRpc3RpYy5jb21wb25lbnQudHMiLCJuZzovLy9HOi9DYXBzdG9uZS9HaXRodWIvQXR0ZW5kYW5jZV9IZXJva3VfRmluYWwvc3JjL2FwcC9zdGF0aXN0aWMvc3RhdGlzdGljLmNvbXBvbmVudC5odG1sIiwibmc6Ly8vRzovQ2Fwc3RvbmUvR2l0aHViL0F0dGVuZGFuY2VfSGVyb2t1X0ZpbmFsL3NyYy9hcHAvc3RhdGlzdGljL3N0YXRpc3RpYy5jb21wb25lbnQudHMuU3RhdGlzdGljQ29tcG9uZW50X0hvc3QuaHRtbCJdLCJzb3VyY2VzQ29udGVudCI6WyIgIiwiPGRpdiBjbGFzcz1cImNvbC1tZC0xMiBjb2wtc20tMTIgY29sLXhzLTEyXCI+XHJcbiAgICA8ZGl2IGNsYXNzPVwieF9wYW5lbFwiPlxyXG4gICAgICAgIDxkaXYgY2xhc3M9XCJ4X3RpdGxlXCI+XHJcbiAgICAgICAgICAgIDxoMz5TdGF0aXN0aWNzIEV4cG9ydDwvaDM+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjbGVhcmZpeFwiPjwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDxkaXYgY2xhc3M9XCJ4X2NvbnRlbnRcIj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNvbC14cy0xMlwiPlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInBhZC10b3BcIj5cclxuICAgICAgICAgICAgICAgICAgICA8YnV0dG9uIHR5cGU9XCJidXR0b25cIiBjbGFzcz1cImJ0biBidG4tcHJpbWFyeSBidXR0b25faWNvbl9jZW50ZXJcIiAoY2xpY2spPVwib25FeHBvcnRFeGFtaW5lZXNMaXN0KClcIj5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPGkgY2xhc3M9XCJmYSBmYS1hZGRyZXNzLWJvb2stbyBmYS0zeFwiPjwvaT5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPGg1IGNsYXNzPVwiYnV0dG9uX3RleHRcIj5FeGFtaW5lZXM8L2g1PlxyXG4gICAgICAgICAgICAgICAgICAgIDwvYnV0dG9uPlxyXG4gICAgICAgICAgICAgICAgICAgIDxidXR0b24gdHlwZT1cImJ1dHRvblwiIGNsYXNzPVwiYnRuIGJ0bi1wcmltYXJ5IGJ1dHRvbl9pY29uX2NlbnRlclwiIChjbGljayk9XCJvbkV4cG9ydEF0dGVuZGFuY2VTdW1tYXJ5KClcIj5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPGkgY2xhc3M9XCJmYSBmYS1wZXJjZW50IGZhLTN4XCI+PC9pPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8aDUgY2xhc3M9XCJidXR0b25fdGV4dFwiPkF0dGVuZGFuY2UgU3VtbWFyeTwvaDU+XHJcbiAgICAgICAgICAgICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICAgICAgICAgICAgPGJ1dHRvbiB0eXBlPVwiYnV0dG9uXCIgY2xhc3M9XCJidG4gYnRuLXByaW1hcnkgYnV0dG9uX2ljb25fY2VudGVyXCIgKGNsaWNrKT1cIm9uRXhwb3J0RXhjZWVkZWRBYnNlbmNlKClcIj5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPGkgY2xhc3M9XCJmYSBmYS13YXJuaW5nIGZhLTN4XCI+PC9pPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8aDUgY2xhc3M9XCJidXR0b25fdGV4dFwiPkV4Y2VlZGVkIEFic2VuY2VzIExpbWl0PC9oNT5cclxuICAgICAgICAgICAgICAgICAgICA8L2J1dHRvbj5cclxuICAgICAgICAgICAgICAgICAgICA8YnV0dG9uIHR5cGU9XCJidXR0b25cIiBjbGFzcz1cImJ0biBidG4tcHJpbWFyeSBidXR0b25faWNvbl9jZW50ZXJcIiAoY2xpY2spPVwib25FeHBvcnRBdHRlbmRhbmNlTGlzdHMoKVwiPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8aSBjbGFzcz1cImZhIGZhLWNhbGVuZGFyLWNoZWNrLW8gZmEtM3hcIj48L2k+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIDxoNSBjbGFzcz1cImJ1dHRvbl90ZXh0XCI+QXR0ZW5kYW5jZSBMaXN0czwvaDU+XHJcbiAgICAgICAgICAgICAgICAgICAgPC9idXR0b24+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuPC9kaXY+XHJcbjxleHBvcnQtbW9kYWwgW2V4cG9ydF90eXBlXT1cImV4cG9ydF90eXBlXCIgW3RpdGxlXT1cImV4cG9ydF90aXRsZVwiPjwvZXhwb3J0LW1vZGFsPiIsIjxhcHAtc3RhdGlzdGljPjwvYXBwLXN0YXRpc3RpYz4iXSwibWFwcGluZ3MiOiJBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozt5RENBQTtNQUFBO01BQUEsMERBQTJDO01BQUEsMkJBQ3ZDO01BQUE7TUFBQSxnQkFBcUIsa0RBQ2pCO01BQUE7TUFBQSw0Q0FBcUI7TUFBQSxxQkFDakI7TUFBQTtNQUFJLHlEQUFzQjtVQUFBLG1DQUMxQjtVQUFBO1VBQUEsOEJBQTRCO01BQzFCLGtEQUNOO1VBQUE7VUFBQSw0Q0FBdUI7VUFBQSxxQkFDbkI7VUFBQTtVQUFBLDhCQUF1QjtNQUNuQjtVQUFBO01BQXFCLDhEQUNqQjtVQUFBO2NBQUE7WUFBQTtZQUFBO1lBQWlFO2NBQUE7Y0FBQTtZQUFBO1lBQWpFO1VBQUEsZ0NBQW1HO01BQy9GO1VBQUE7TUFBMEMsa0VBQzFDO1VBQUE7VUFBQSwwREFBd0I7VUFBQSw4QkFBYztNQUNqQyw4REFDVDtVQUFBO2NBQUE7WUFBQTtZQUFBO1lBQWlFO2NBQUE7Y0FBQTtZQUFBO1lBQWpFO1VBQUEsZ0NBQXVHO01BQ25HO1VBQUE7TUFBbUMsa0VBQ25DO1VBQUE7VUFBQSwwREFBd0I7VUFBQSx1Q0FBdUI7VUFBQSw2QkFDMUM7TUFDVDtVQUFBO1FBQUE7UUFBQTtRQUFpRTtVQUFBO1VBQUE7UUFBQTtRQUFqRTtNQUFBLGdDQUFxRztNQUNqRztVQUFBO01BQW1DLGtFQUNuQztVQUFBO1VBQUEsMERBQXdCO1VBQUEsNENBQTRCO1VBQUEsNkJBQy9DO01BQ1Q7VUFBQTtRQUFBO1FBQUE7UUFBaUU7VUFBQTtVQUFBO1FBQUE7UUFBakU7TUFBQSxnQ0FBcUc7TUFDakc7VUFBQTtNQUE0QyxrRUFDNUM7VUFBQTtVQUFBLDBEQUF3QjtVQUFBLHFDQUFxQjtNQUN4QywwREFDUDtVQUFBLG1DQUNKO01BQ0osOENBQ0o7VUFBQSxTQUNKLDBDQUNOO1VBQUE7VUFBQTthQUFBO2lGQUFBO1VBQUE7O0lBQTBDO0lBQTVCO0lBQWQsWUFBMEMsVUFBNUIsU0FBZDs7OztvQkM5QkE7TUFBQTttQ0FBQSxVQUFBO01BQUE7O1FBQUE7Ozs7In0=
-//# sourceMappingURL=statistic.component.ngfactory.js.map
+        }, function (error) { _this.appService.showPNotify('failure', "Server Error! Can't get settings", 'error'); });
+    };
+    return SettingComponent;
+}());
+SettingComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-setting',
+        template: __webpack_require__("../../../../../src/app/settings/setting.component.html")
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["t" /* ScheduleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["t" /* ScheduleService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["g" /* AppService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["g" /* AppService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["h" /* SemesterService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_shared_module__["h" /* SemesterService */]) === "function" && _d || Object])
+], SettingComponent);
+
+var _a, _b, _c, _d;
+//# sourceMappingURL=setting.component.js.map
 
 /***/ }),
 
-/***/ "../../../../../src/$$_gendir/app/statistic/statistic.module.ngfactory.ts":
+/***/ "../../../../../src/app/settings/setting.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_statistic_statistic_module__ = __webpack_require__("../../../../../src/app/statistic/statistic.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gendir_node_modules_ngx_bootstrap_tooltip_tooltip_container_component_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/node_modules/ngx-bootstrap/tooltip/tooltip-container.component.ngfactory.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__statistic_component_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/app/statistic/statistic.component.ngfactory.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular_2_local_storage_dist_local_storage_service__ = __webpack_require__("../../../../angular-2-local-storage/dist/local-storage.service.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular_2_local_storage_dist_local_storage_service___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular_2_local_storage_dist_local_storage_service__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__agm_core_utils_browser_globals__ = __webpack_require__("../../../../@agm/core/utils/browser-globals.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__agm_core_services_maps_api_loader_maps_api_loader__ = __webpack_require__("../../../../@agm/core/services/maps-api-loader/maps-api-loader.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__agm_core_services_maps_api_loader_lazy_maps_api_loader__ = __webpack_require__("../../../../@agm/core/services/maps-api-loader/lazy-maps-api-loader.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ngx_bootstrap_tooltip_tooltip_config__ = __webpack_require__("../../../../ngx-bootstrap/tooltip/tooltip.config.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ngx_bootstrap_positioning_positioning_service__ = __webpack_require__("../../../../ngx-bootstrap/positioning/positioning.service.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ngx_bootstrap_component_loader_component_loader_factory__ = __webpack_require__("../../../../ngx-bootstrap/component-loader/component-loader.factory.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_shared_config__ = __webpack_require__("../../../../../src/app/shared/config.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_shared_services_app_service__ = __webpack_require__("../../../../../src/app/shared/services/app.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__ = __webpack_require__("../../../../../src/app/shared/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_shared_services_courses_service__ = __webpack_require__("../../../../../src/app/shared/services/courses.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_shared_services_teachers_service__ = __webpack_require__("../../../../../src/app/shared/services/teachers.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__app_shared_services_attendance_service__ = __webpack_require__("../../../../../src/app/shared/services/attendance.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__app_shared_services_schedule_service__ = __webpack_require__("../../../../../src/app/shared/services/schedule.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__app_shared_services_student_service__ = __webpack_require__("../../../../../src/app/shared/services/student.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__app_shared_services_excel_service__ = __webpack_require__("../../../../../src/app/shared/services/excel.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__app_shared_services_absence_request_service__ = __webpack_require__("../../../../../src/app/shared/services/absence-request.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__app_shared_services_auth_guard_service__ = __webpack_require__("../../../../../src/app/shared/services/auth-guard.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__app_shared_services_semester_service__ = __webpack_require__("../../../../../src/app/shared/services/semester.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__app_shared_services_feedback_service__ = __webpack_require__("../../../../../src/app/shared/services/feedback.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__app_shared_services_check_attendance_service__ = __webpack_require__("../../../../../src/app/shared/services/check-attendance.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__app_shared_services_socket_service__ = __webpack_require__("../../../../../src/app/shared/services/socket.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__app_shared_services_quiz_service__ = __webpack_require__("../../../../../src/app/shared/services/quiz.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__app_shared_services_classes_service__ = __webpack_require__("../../../../../src/app/shared/services/classes.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__app_shared_services_programs_service__ = __webpack_require__("../../../../../src/app/shared/services/programs.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__app_shared_services_notification_service__ = __webpack_require__("../../../../../src/app/shared/services/notification.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34_ngx_bootstrap_tabs_tabs_module__ = __webpack_require__("../../../../ngx-bootstrap/tabs/tabs.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_angular2_qrcode__ = __webpack_require__("../../../../angular2-qrcode/lib/angular2-qrcode.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_angular_2_local_storage_dist_local_storage_module__ = __webpack_require__("../../../../angular-2-local-storage/dist/local-storage.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_angular_2_local_storage_dist_local_storage_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_36_angular_2_local_storage_dist_local_storage_module__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__agm_core_core_module__ = __webpack_require__("../../../../@agm/core/core.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38_ng2_file_upload_file_upload_file_upload_module__ = __webpack_require__("../../../../ng2-file-upload/file-upload/file-upload.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38_ng2_file_upload_file_upload_file_upload_module___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_38_ng2_file_upload_file_upload_file_upload_module__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39_ngx_bootstrap_tooltip_tooltip_module__ = __webpack_require__("../../../../ngx-bootstrap/tooltip/tooltip.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__ngx_translate_core_index__ = __webpack_require__("../../../../@ngx-translate/core/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__app_shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__app_statistic_statistic_component__ = __webpack_require__("../../../../../src/app/statistic/statistic.component.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatisticModuleNgFactory", function() { return StatisticModuleNgFactory; });
-/**
- * @fileoverview This file is generated by the Angular template compiler.
- * Do not edit.
- * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride}
- */
-/* tslint:disable */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap__ = __webpack_require__("../../../../ngx-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_text_mask__ = __webpack_require__("../../../../angular2-text-mask/dist/angular2TextMask.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_text_mask___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_text_mask__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__setting_component__ = __webpack_require__("../../../../../src/app/settings/setting.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_bootstrap_pagination__ = __webpack_require__("../../../../ngx-bootstrap/pagination/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ngx_bootstrap_tabs__ = __webpack_require__("../../../../ngx-bootstrap/tabs/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ng2_file_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared_module_autosize_autosize_module__ = __webpack_require__("../../../../../src/app/shared/module/autosize/autosize.module.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingModule", function() { return SettingModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 
 
 
@@ -182,142 +128,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var StatisticModuleNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵcmf"](__WEBPACK_IMPORTED_MODULE_1__app_statistic_statistic_module__["a" /* StatisticModule */], [], function (_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmod"]([__WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentFactoryResolver"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵCodegenComponentFactoryResolver"], [[8, [__WEBPACK_IMPORTED_MODULE_2__gendir_node_modules_ngx_bootstrap_tooltip_tooltip_container_component_ngfactory__["a" /* TooltipContainerComponentNgFactory */], __WEBPACK_IMPORTED_MODULE_3__statistic_component_ngfactory__["a" /* StatisticComponentNgFactory */]]],
-            [3, __WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentFactoryResolver"]], __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModuleRef"]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_4__angular_common__["NgLocalization"], __WEBPACK_IMPORTED_MODULE_4__angular_common__["NgLocaleLocalization"], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["LOCALE_ID"]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["ɵi"], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["ɵi"], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_6_angular_2_local_storage_dist_local_storage_service__["LocalStorageService"], __WEBPACK_IMPORTED_MODULE_6_angular_2_local_storage_dist_local_storage_service__["LocalStorageService"], ['LOCAL_STORAGE_SERVICE_CONFIG']),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_7__agm_core_utils_browser_globals__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_7__agm_core_utils_browser_globals__["a" /* WindowRef */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_7__agm_core_utils_browser_globals__["b" /* DocumentRef */], __WEBPACK_IMPORTED_MODULE_7__agm_core_utils_browser_globals__["b" /* DocumentRef */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_8__agm_core_services_maps_api_loader_maps_api_loader__["a" /* MapsAPILoader */], __WEBPACK_IMPORTED_MODULE_9__agm_core_services_maps_api_loader_lazy_maps_api_loader__["a" /* LazyMapsAPILoader */], [__WEBPACK_IMPORTED_MODULE_9__agm_core_services_maps_api_loader_lazy_maps_api_loader__["b" /* LAZY_MAPS_API_CONFIG */], __WEBPACK_IMPORTED_MODULE_7__agm_core_utils_browser_globals__["a" /* WindowRef */], __WEBPACK_IMPORTED_MODULE_7__agm_core_utils_browser_globals__["b" /* DocumentRef */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_10_ngx_bootstrap_tooltip_tooltip_config__["a" /* TooltipConfig */], __WEBPACK_IMPORTED_MODULE_10_ngx_bootstrap_tooltip_tooltip_config__["a" /* TooltipConfig */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_11_ngx_bootstrap_positioning_positioning_service__["a" /* PositioningService */], __WEBPACK_IMPORTED_MODULE_11_ngx_bootstrap_positioning_positioning_service__["a" /* PositioningService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_12_ngx_bootstrap_component_loader_component_loader_factory__["a" /* ComponentLoaderFactory */], __WEBPACK_IMPORTED_MODULE_12_ngx_bootstrap_component_loader_component_loader_factory__["a" /* ComponentLoaderFactory */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["ComponentFactoryResolver"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Injector"],
-            __WEBPACK_IMPORTED_MODULE_11_ngx_bootstrap_positioning_positioning_service__["a" /* PositioningService */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["ApplicationRef"]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_14__app_shared_services_app_service__["a" /* AppService */], __WEBPACK_IMPORTED_MODULE_14__app_shared_services_app_service__["a" /* AppService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_18__app_shared_services_courses_service__["a" /* CourseService */], __WEBPACK_IMPORTED_MODULE_18__app_shared_services_courses_service__["a" /* CourseService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_19__app_shared_services_teachers_service__["a" /* TeacherService */], __WEBPACK_IMPORTED_MODULE_19__app_shared_services_teachers_service__["a" /* TeacherService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */],
-            __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_20__app_shared_services_attendance_service__["a" /* AttendanceService */], __WEBPACK_IMPORTED_MODULE_20__app_shared_services_attendance_service__["a" /* AttendanceService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_21__app_shared_services_schedule_service__["a" /* ScheduleService */], __WEBPACK_IMPORTED_MODULE_21__app_shared_services_schedule_service__["a" /* ScheduleService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_22__app_shared_services_student_service__["a" /* StudentService */], __WEBPACK_IMPORTED_MODULE_22__app_shared_services_student_service__["a" /* StudentService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */],
-            __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_6_angular_2_local_storage_dist_local_storage_service__["LocalStorageService"]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_23__app_shared_services_excel_service__["a" /* ExcelService */], __WEBPACK_IMPORTED_MODULE_23__app_shared_services_excel_service__["a" /* ExcelService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_14__app_shared_services_app_service__["a" /* AppService */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_24__app_shared_services_absence_request_service__["a" /* AbsenceRequestService */], __WEBPACK_IMPORTED_MODULE_24__app_shared_services_absence_request_service__["a" /* AbsenceRequestService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_25__app_shared_services_auth_guard_service__["a" /* AuthGuardService */], __WEBPACK_IMPORTED_MODULE_25__app_shared_services_auth_guard_service__["a" /* AuthGuardService */], [__WEBPACK_IMPORTED_MODULE_14__app_shared_services_app_service__["a" /* AppService */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_6_angular_2_local_storage_dist_local_storage_service__["LocalStorageService"]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_26__app_shared_services_semester_service__["a" /* SemesterService */], __WEBPACK_IMPORTED_MODULE_26__app_shared_services_semester_service__["a" /* SemesterService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_27__app_shared_services_feedback_service__["a" /* FeedbackService */], __WEBPACK_IMPORTED_MODULE_27__app_shared_services_feedback_service__["a" /* FeedbackService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_14__app_shared_services_app_service__["a" /* AppService */],
-            __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_28__app_shared_services_check_attendance_service__["a" /* CheckAttendanceService */], __WEBPACK_IMPORTED_MODULE_28__app_shared_services_check_attendance_service__["a" /* CheckAttendanceService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_29__app_shared_services_socket_service__["a" /* SocketService */], __WEBPACK_IMPORTED_MODULE_29__app_shared_services_socket_service__["a" /* SocketService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_30__app_shared_services_quiz_service__["a" /* QuizService */], __WEBPACK_IMPORTED_MODULE_30__app_shared_services_quiz_service__["a" /* QuizService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_14__app_shared_services_app_service__["a" /* AppService */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */],
-            __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_6_angular_2_local_storage_dist_local_storage_service__["LocalStorageService"]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_31__app_shared_services_classes_service__["a" /* ClassesService */], __WEBPACK_IMPORTED_MODULE_31__app_shared_services_classes_service__["a" /* ClassesService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_32__app_shared_services_programs_service__["a" /* ProgramsService */], __WEBPACK_IMPORTED_MODULE_32__app_shared_services_programs_service__["a" /* ProgramsService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](4608, __WEBPACK_IMPORTED_MODULE_33__app_shared_services_notification_service__["a" /* NotificationService */], __WEBPACK_IMPORTED_MODULE_33__app_shared_services_notification_service__["a" /* NotificationService */], [__WEBPACK_IMPORTED_MODULE_15__angular_http__["i" /* Http */], __WEBPACK_IMPORTED_MODULE_13__app_shared_config__["a" /* AppConfig */], __WEBPACK_IMPORTED_MODULE_16__app_shared_services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_4__angular_common__["CommonModule"], __WEBPACK_IMPORTED_MODULE_4__angular_common__["CommonModule"], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["ɵba"], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["ɵba"], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormsModule"], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["FormsModule"], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_17__angular_router__["x" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_17__angular_router__["x" /* RouterModule */], [[2, __WEBPACK_IMPORTED_MODULE_17__angular_router__["m" /* ɵa */]], [2, __WEBPACK_IMPORTED_MODULE_17__angular_router__["a" /* Router */]]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_34_ngx_bootstrap_tabs_tabs_module__["a" /* TabsModule */], __WEBPACK_IMPORTED_MODULE_34_ngx_bootstrap_tabs_tabs_module__["a" /* TabsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_35_angular2_qrcode__["a" /* QRCodeModule */], __WEBPACK_IMPORTED_MODULE_35_angular2_qrcode__["a" /* QRCodeModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_36_angular_2_local_storage_dist_local_storage_module__["LocalStorageModule"], __WEBPACK_IMPORTED_MODULE_36_angular_2_local_storage_dist_local_storage_module__["LocalStorageModule"], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_37__agm_core_core_module__["a" /* AgmCoreModule */], __WEBPACK_IMPORTED_MODULE_37__agm_core_core_module__["a" /* AgmCoreModule */], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_38_ng2_file_upload_file_upload_file_upload_module__["FileUploadModule"], __WEBPACK_IMPORTED_MODULE_38_ng2_file_upload_file_upload_file_upload_module__["FileUploadModule"], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_39_ngx_bootstrap_tooltip_tooltip_module__["a" /* TooltipModule */], __WEBPACK_IMPORTED_MODULE_39_ngx_bootstrap_tooltip_tooltip_module__["a" /* TooltipModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_40__ngx_translate_core_index__["a" /* TranslateModule */], __WEBPACK_IMPORTED_MODULE_40__ngx_translate_core_index__["a" /* TranslateModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_41__app_shared_shared_module__["a" /* SharedModule */], __WEBPACK_IMPORTED_MODULE_41__app_shared_shared_module__["a" /* SharedModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](512, __WEBPACK_IMPORTED_MODULE_1__app_statistic_statistic_module__["a" /* StatisticModule */], __WEBPACK_IMPORTED_MODULE_1__app_statistic_statistic_module__["a" /* StatisticModule */], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](256, 'LOCAL_STORAGE_SERVICE_CONFIG', { prefix: 'qldd', storageType: 'localStorage' }, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](256, __WEBPACK_IMPORTED_MODULE_9__agm_core_services_maps_api_loader_lazy_maps_api_loader__["b" /* LAZY_MAPS_API_CONFIG */], { apiKey: 'AIzaSyAaHGDoehkovVBMyKmJL1Q-7-4wZRYpqVg' }, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["ɵmpd"](1024, __WEBPACK_IMPORTED_MODULE_17__angular_router__["t" /* ROUTES */], function () {
-            return [[{ path: '', component: __WEBPACK_IMPORTED_MODULE_42__app_statistic_statistic_component__["a" /* StatisticComponent */] }]];
-        }, [])]);
-});
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiRzovQ2Fwc3RvbmUvR2l0aHViL0F0dGVuZGFuY2VfSGVyb2t1X0ZpbmFsL3NyYy9hcHAvc3RhdGlzdGljL3N0YXRpc3RpYy5tb2R1bGUubmdmYWN0b3J5LnRzIiwidmVyc2lvbiI6Mywic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibmc6Ly8vRzovQ2Fwc3RvbmUvR2l0aHViL0F0dGVuZGFuY2VfSGVyb2t1X0ZpbmFsL3NyYy9hcHAvc3RhdGlzdGljL3N0YXRpc3RpYy5tb2R1bGUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiICJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OyJ9
-//# sourceMappingURL=statistic.module.ngfactory.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/statistic/statistic.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_shared_module__ = __webpack_require__("../../../../../src/app/shared/shared.module.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatisticComponent; });
-
-var StatisticComponent = (function () {
-    function StatisticComponent(appService, authService, excelService) {
-        this.appService = appService;
-        this.authService = authService;
-        this.excelService = excelService;
-    }
-    StatisticComponent.prototype.ngOnInit = function () { };
-    StatisticComponent.prototype.onExportExamineesList = function () {
-        var _this = this;
-        this.export_type = this.appService.import_export_type.examinees;
-        this.export_title = 'Export Examinees';
-        setTimeout(function () {
-            _this.exportModal.onOpenModal();
-        }, 500);
-    };
-    StatisticComponent.prototype.onExportAttendanceSummary = function () {
-        var _this = this;
-        this.export_type = this.appService.import_export_type.attendance_summary;
-        this.export_title = 'Export Attendance Summary';
-        setTimeout(function () {
-            _this.exportModal.onOpenModal();
-        }, 500);
-    };
-    StatisticComponent.prototype.onExportAttendanceLists = function () {
-        var _this = this;
-        this.export_type = this.appService.import_export_type.attendance_lists;
-        this.export_title = 'Export Attendance Lists';
-        setTimeout(function () {
-            _this.exportModal.onOpenModal();
-        }, 500);
-    };
-    StatisticComponent.prototype.onExportExceededAbsence = function () {
-        var _this = this;
-        this.export_type = this.appService.import_export_type.exceeded_absence_limit;
-        this.export_title = 'Export Exceeded Absences Limit';
-        setTimeout(function () {
-            _this.exportModal.onOpenModal();
-        }, 500);
-    };
-    StatisticComponent.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_0__shared_shared_module__["b" /* AppService */] }, { type: __WEBPACK_IMPORTED_MODULE_0__shared_shared_module__["c" /* AuthService */] }, { type: __WEBPACK_IMPORTED_MODULE_0__shared_shared_module__["f" /* ExcelService */] }]; };
-    return StatisticComponent;
-}());
-
-//# sourceMappingURL=statistic.component.js.map
-
-/***/ }),
-
-/***/ "../../../../../src/app/statistic/statistic.module.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__statistic_component__ = __webpack_require__("../../../../../src/app/statistic/statistic.component.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatisticModule; });
-
-var homeRoutes = [
-    {
-        path: '',
-        component: __WEBPACK_IMPORTED_MODULE_0__statistic_component__["a" /* StatisticComponent */],
-    }
+var Routes = [
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_6__setting_component__["a" /* SettingComponent */] }
 ];
-var StatisticModule = (function () {
-    function StatisticModule() {
+var SettingModule = (function () {
+    function SettingModule() {
     }
-    return StatisticModule;
+    return SettingModule;
 }());
+SettingModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_common__["CommonModule"],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* RouterModule */].forChild(Routes),
+            __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap__["e" /* CollapseModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_7_ngx_bootstrap_pagination__["a" /* PaginationModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_8_ngx_bootstrap_tabs__["a" /* TabsModule */],
+            __WEBPACK_IMPORTED_MODULE_9_ng2_file_upload__["FileUploadModule"],
+            __WEBPACK_IMPORTED_MODULE_5_angular2_text_mask__["TextMaskModule"],
+            __WEBPACK_IMPORTED_MODULE_10__shared_module_autosize_autosize_module__["a" /* AutosizeModule */]
+        ],
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_6__setting_component__["a" /* SettingComponent */],
+        ],
+        providers: []
+    })
+], SettingModule);
 
-//# sourceMappingURL=statistic.module.js.map
+//# sourceMappingURL=setting.module.js.map
 
 /***/ })
 
